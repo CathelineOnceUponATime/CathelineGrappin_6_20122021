@@ -29,7 +29,7 @@ class Media {
 async function getPhotographers (photographers) {
   let photographeCourant
   let mediaCourant
-  for (let i = 0; i < photographers['photographers'].length; i++) {
+  for (let i = 0; i < photographers.photographers.length; i++) {
     photographeCourant = new Photographe()
     photographeCourant.id = photographers.photographers[i].id
     photographeCourant.nom = photographers.photographers[i].name
@@ -41,7 +41,7 @@ async function getPhotographers (photographers) {
     tphotographes.push(photographeCourant)
   }
   for (let k = 0; k < tphotographes.length; k++) {
-    for (let j = 0; j < photographers['media'].length; j++) {
+    for (let j = 0; j < photographers.media.length; j++) {
       if (photographers.media[j].photographerId === tphotographes[k].id) {
         mediaCourant = new Media()
         mediaCourant.id = photographers.media[j].id
@@ -67,7 +67,7 @@ async function displayData (tphotographes) {
   })
 }
 const getDonnees = async function (photographers) {
-  let response = await fetch('./data/photographers.json')
+  const response = await fetch('./data/photographers.json')
   photographers = await response.json()
   tphotographes = await getPhotographers(photographers)
   console.log(photographers)
