@@ -1,3 +1,6 @@
+/* global photographerFactory, fetch */
+/* eslint no-undef: "error" */
+
 let tphotographes = []
 let photographers
 
@@ -14,21 +17,8 @@ class Photographe {
   }
 }
 
-class Media {
-  constructor (id, photographeId, titre, image, likes, date, prix) {
-    this.id = id
-    this.photographeId = photographeId
-    this.titre = titre
-    this.image = image
-    this.likes = likes
-    this.date = date
-    this.prix = prix
-  }
-}
-
 async function getPhotographers (photographers) {
   let photographeCourant
-  let mediaCourant
   for (let i = 0; i < photographers.photographers.length; i++) {
     photographeCourant = new Photographe()
     photographeCourant.id = photographers.photographers[i].id
@@ -39,21 +29,6 @@ async function getPhotographers (photographers) {
     photographeCourant.portrait = photographers.photographers[i].portrait
     photographeCourant.prix = photographers.photographers[i].price
     tphotographes.push(photographeCourant)
-  }
-  for (let k = 0; k < tphotographes.length; k++) {
-    for (let j = 0; j < photographers.media.length; j++) {
-      if (photographers.media[j].photographerId === tphotographes[k].id) {
-        mediaCourant = new Media()
-        mediaCourant.id = photographers.media[j].id
-        mediaCourant.photographeId = photographers.media[j].photographerId
-        mediaCourant.titre = photographers.media[j].title
-        mediaCourant.image = photographers.media[j].image
-        mediaCourant.likes = photographers.media[j].likes
-        mediaCourant.date = photographers.media[j].date
-        mediaCourant.prix = photographers.media[j].price
-        tphotographes[k].tMedia.push(mediaCourant)
-      }
-    }
   }
   return tphotographes
 }
@@ -74,8 +49,6 @@ const getDonnees = async function (photographers) {
 }
 
 async function init () {
-  // photographers = obtenirJson(jsonData)
-  // Récupère les datas des photographes
   await getDonnees(photographers)
   displayData(tphotographes)
 }

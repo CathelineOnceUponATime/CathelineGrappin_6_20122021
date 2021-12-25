@@ -1,0 +1,19 @@
+.media_section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.media{
+    div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    img {
+        object-fit: cover;
+        width: 350px;
+        height: 300px;
+        border-radius: 5px;
+    }
+}
