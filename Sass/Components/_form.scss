@@ -1,17 +1,13 @@
 form {
-    display: flex;
+    @include en-flex(column, normal, flex-start);
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
     label {
         color: #312E2E;
         font-size: 36px;
     }
     div {
-        display: flex;
-        flex-direction: column;
+        @include en-flex(column, normal, self-start);
         width: 100%;
-        align-items: self-start;
         margin-bottom: 26px;
     }
     input {

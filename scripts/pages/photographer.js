@@ -1,9 +1,9 @@
 // Mettre le code JavaScript lié à la page photographer.html
-/* global mediaFactory, fetch */
+/* global mediaFactory, fetch, photographeEntete */
 /* eslint no-undef: "error" */
 
-let tphotographes = []
-let photographers
+let tabPhotographes = []
+let lesPhotographes
 
 class Photographe {
   constructor (id, nom, ville, pays, tagLine, prix, portrait) {
@@ -19,11 +19,12 @@ class Photographe {
 }
 
 class Media {
-  constructor (id, photographeId, titre, image, likes, date, prix) {
+  constructor (id, photographeId, titre, image, video, likes, date, prix) {
     this.id = id
     this.photographeId = photographeId
     this.titre = titre
     this.image = image
+    this.video = video
     this.likes = likes
     this.date = date
     this.prix = prix
@@ -39,43 +40,54 @@ if (searchParam.has('id')) {
   console.log(id)
 }
 
-async function getMedias (photographers) {
+async function getMedias (lesPhotographes) {
   let photographeCourant
   let mediaCourant
-  for (let i = 0; i < photographers.photographers.length; i++) {
+  for (let i = 0; i < lesPhotographes.photographers.length; i++) {
     photographeCourant = new Photographe()
-    photographeCourant.id = photographers.photographers[i].id
-    photographeCourant.nom = photographers.photographers[i].name
-    photographeCourant.ville = photographers.photographers[i].city
-    photographeCourant.pays = photographers.photographers[i].country
-    photographeCourant.tagLine = photographers.photographers[i].tagline
-    photographeCourant.portrait = photographers.photographers[i].portrait
-    photographeCourant.prix = photographers.photographers[i].price
-    tphotographes.push(photographeCourant)
+    photographeCourant.id = lesPhotographes.photographers[i].id
+    photographeCourant.nom = lesPhotographes.photographers[i].name
+    photographeCourant.ville = lesPhotographes.photographers[i].city
+    photographeCourant.pays = lesPhotographes.photographers[i].country
+    photographeCourant.tagLine = lesPhotographes.photographers[i].tagline
+    photographeCourant.portrait = lesPhotographes.photographers[i].portrait
+    photographeCourant.prix = lesPhotographes.photographers[i].price
+    tabPhotographes.push(photographeCourant)
   }
-  for (let k = 0; k < tphotographes.length; k++) {
-    for (let j = 0; j < photographers.media.length; j++) {
-      if (photographers.media[j].photographerId === tphotographes[k].id) {
+  for (let k = 0; k < tabPhotographes.length; k++) {
+    for (let j = 0; j < lesPhotographes.media.length; j++) {
+      if (lesPhotographes.media[j].photographerId === tabPhotographes[k].id) {
         mediaCourant = new Media()
-        mediaCourant.id = photographers.media[j].id
-        mediaCourant.photographeId = photographers.media[j].photographerId
-        mediaCourant.titre = photographers.media[j].title
-        mediaCourant.image = photographers.media[j].image
-        mediaCourant.likes = photographers.media[j].likes
-        mediaCourant.date = photographers.media[j].date
-        mediaCourant.prix = photographers.media[j].price
-        tphotographes[k].tMedia.push(mediaCourant)
+        mediaCourant.id = lesPhotographes.media[j].id
+        mediaCourant.photographeId = lesPhotographes.media[j].photographerId
+        mediaCourant.titre = lesPhotographes.media[j].title
+        if (lesPhotographes.media[j].image === undefined) {
+          mediaCourant.video = lesPhotographes.media[j].video
+        } else {
+          mediaCourant.image = lesPhotographes.media[j].image
+        }
+        mediaCourant.likes = lesPhotographes.media[j].likes
+        mediaCourant.date = lesPhotographes.media[j].date
+        mediaCourant.prix = lesPhotographes.media[j].price
+        tabPhotographes[k].tMedia.push(mediaCourant)
       }
     }
   }
-  return tphotographes
+  return tabPhotographes
 }
 
 async function afficheMedia (tphotographes) {
   const mediasSection = document.querySelector('.media_section')
+  const photographeHeader = document.querySelector('.photograph-header')
   console.log(id)
   tphotographes.forEach((photographer) => {
     if (photographer.id === parseInt(id)) {
+      const photographe = photographeEntete(photographer)
+      const photographeTete = photographe.getPhotographeEntete()
+      const photographeImage = photographe.getPhotographeImage()
+      photographeHeader.insertBefore(photographeTete, photographeHeader.firstChild)
+      photographeHeader.appendChild(photographeImage)
+
       photographer.tMedia.forEach((media) => {
         const mediaModel = mediaFactory(media)
         const userCardDOM = mediaModel.getMediaCardDOM()
@@ -85,16 +97,16 @@ async function afficheMedia (tphotographes) {
   })
 }
 
-const getDonneesMedia = async function (photographers) {
+const getDonneesMedia = async function (lesPhotographes) {
   const response = await fetch('./data/photographers.json')
-  photographers = await response.json()
-  tphotographes = await getMedias(photographers)
-  console.log(photographers)
+  lesPhotographes = await response.json()
+  tabPhotographes = await getMedias(lesPhotographes)
+  console.log(lesPhotographes)
 }
 
 async function init () {
-  await getDonneesMedia(photographers)
-  afficheMedia(tphotographes)
+  await getDonneesMedia(lesPhotographes)
+  afficheMedia(tabPhotographes)
 }
 
 init()

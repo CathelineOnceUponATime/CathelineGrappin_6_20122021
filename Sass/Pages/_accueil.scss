@@ -5,10 +5,7 @@ body {
 
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include en-flex(row, space-between, center);
     height: 90px;
 }
 
@@ -24,12 +21,6 @@ h1 {
 
 #contact_modal {
     display: none;
-}
-
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
 }
 
 .contact_button {

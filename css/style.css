@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -8,6 +8,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: nowrap;
   align-items: center;
   height: 90px;
 }
@@ -26,12 +27,6 @@ h1 {
   display: none;
 }
 
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 0 100px;
-}
-
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -45,17 +40,60 @@ h1 {
   cursor: pointer;
 }
 
-.media_section {
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.photograph-header h1 {
+  color: #d3573c;
+  font-size: 64px;
+  margin: 0;
+}
+.photograph-header img {
+  background: #C4C4C4;
+  border-radius: 50%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+}
+.photograph-header .ville {
+  color: #901c1c;
+  font-size: 24px;
+}
+.photograph-header .tagLine {
+  color: #525252;
+  font-size: 18px;
+}
+
+.media_section {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: normal;
 }
 
 .media div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  text-align: center;
+  color: #901c1c;
+  font-size: 24px;
+}
+.media div .like {
+  color: #901c1c;
+  font-size: 16px;
 }
 .media img {
   object-fit: cover;
@@ -66,9 +104,11 @@ h1 {
 
 form {
   display: flex;
-  width: 100%;
   flex-direction: column;
+  justify-content: normal;
+  flex-wrap: nowrap;
   align-items: flex-start;
+  width: 100%;
 }
 form label {
   color: #312E2E;
@@ -77,8 +117,10 @@ form label {
 form div {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: normal;
+  flex-wrap: nowrap;
   align-items: self-start;
+  width: 100%;
   margin-bottom: 26px;
 }
 form input {
@@ -94,8 +136,9 @@ form input {
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
   padding: 35px;
   margin: auto;
 }
@@ -119,16 +162,19 @@ form input {
   margin-top: 100px;
 }
 .photographer_section article {
-  justify-self: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-self: center;
 }
 .photographer_section article a {
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  justify-content: normal;
+  flex-wrap: nowrap;
   align-items: center;
   text-align: center;
 }
@@ -149,15 +195,16 @@ form input {
   margin: 0;
 }
 .photographer_section article .ville {
-  font-size: 13px;
   color: #901c1c;
+  font-size: 13px;
 }
 .photographer_section article .tagLine {
+  color: black;
   font-size: 10px;
 }
 .photographer_section article .prix {
-  font-size: 9px;
   color: #757575;
+  font-size: 9px;
 }
 
 /*# sourceMappingURL=style.css.map */
