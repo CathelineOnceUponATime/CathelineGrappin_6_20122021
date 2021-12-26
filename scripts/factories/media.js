@@ -43,11 +43,6 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const icone = document.createElement('i')
     const divMedia = document.createElement('div')
     article.classList.add('media')
-    img.setAttribute('src', picture)
-    source.setAttribute('src', lienVideo)
-    video.controls = true
-    video.width = 400
-    video.preload = 'metadata'
     h2.textContent = data.titre
     lien.href = '#'
     icone.classList.add('fas')
@@ -56,9 +51,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     likes.classList.add('like')
     article.appendChild(lien)
     if (data.image === undefined) {
+      source.setAttribute('src', lienVideo)
+      video.controls = true
+      video.width = 400
+      video.preload = 'metadata'
       video.appendChild(source)
       lien.appendChild(video)
     } else {
+      img.setAttribute('src', picture)
       lien.appendChild(img)
     }
     likes.appendChild(icone)
@@ -67,5 +67,9 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     article.appendChild(divMedia)
     return (article)
   }
-  return { picture, data, getMediaCardDOM }
+  if (data.image === undefined) {
+    return { lienVideo, data, getMediaCardDOM }
+  } else {
+    return { picture, data, getMediaCardDOM }
+  }
 }

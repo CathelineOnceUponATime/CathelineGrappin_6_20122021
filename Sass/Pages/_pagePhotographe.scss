@@ -32,9 +32,14 @@
     div{
         @include en-flex(row, space-between, center);
         text-align: center;
-        @include en-forme($couleur-secondaire, 24px);
+        h2 {
+            @include en-forme($couleur-secondaire, 24px);
+        }    
         .like {
-            @include en-forme($couleur-secondaire, 16px)
+            @include en-forme($couleur-secondaire, 16px);
+            i {
+                margin-left : 10px;
+            }
         }
     }
     

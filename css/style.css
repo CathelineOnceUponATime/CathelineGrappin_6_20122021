@@ -88,12 +88,17 @@ h1 {
   flex-wrap: nowrap;
   align-items: center;
   text-align: center;
+}
+.media div h2 {
   color: #901c1c;
   font-size: 24px;
 }
 .media div .like {
   color: #901c1c;
   font-size: 16px;
+}
+.media div .like i {
+  margin-left: 10px;
 }
 .media img {
   object-fit: cover;
