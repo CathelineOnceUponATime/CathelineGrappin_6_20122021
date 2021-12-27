@@ -35,6 +35,7 @@ function encart (data) { // eslint-disable-line no-unused-vars
     const tarif = document.createElement('p')
     article.classList.add('encart')
     nbLikes.textContent = data.nbLikesTotal + ' '
+    nbLikes.id = 'nbLikesTotal'
     icone.classList.add('fas')
     icone.classList.add('fa-heart')
     nbLikes.appendChild(icone)
@@ -60,6 +61,9 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const likes = document.createElement('p')
     const icone = document.createElement('i')
     const divMedia = document.createElement('div')
+    const nbLikesTotal = document.getElementById('nbLikesTotal')
+    const iconeTotal = document.createElement('i')
+    let nbLikes = 0
     article.classList.add('media')
     h2.textContent = data.titre
     lien.href = '#'
@@ -83,6 +87,16 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     divMedia.appendChild(h2)
     divMedia.appendChild(likes)
     article.appendChild(divMedia)
+    icone.addEventListener('click', function () {
+      likes.textContent = (data.likes++) + ' '
+      likes.appendChild(icone)
+      nbLikes = parseInt(nbLikesTotal.textContent)
+      nbLikes++
+      nbLikesTotal.textContent = nbLikes + ' '
+      iconeTotal.classList.add('fas')
+      iconeTotal.classList.add('fa-heart')
+      nbLikesTotal.appendChild(iconeTotal)
+    })
     return article
   }
   if (data.image === undefined) {
