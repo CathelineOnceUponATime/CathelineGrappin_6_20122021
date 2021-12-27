@@ -1,0 +1,21 @@
+.figure {
+    @include en-flex(row, space-between, center);
+    i {
+        @include en-forme($couleur-secondaire, 72px);
+    }
+    .fa-times {
+        position: absolute;
+        top: 9%;
+        left: 94%;
+    }
+    figcaption {
+        position: absolute;
+        bottom: 13%;
+        right: 87%;
+    }
+    img {
+        width: 1050px;
+        height: 900px;
+        object-fit: cover;
+    }
+}
