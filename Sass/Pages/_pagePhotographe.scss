@@ -50,3 +50,16 @@
         border-radius: 5px;
     }
 }
+.encart {
+    @include en-flex(row, space-between, center);
+    @include en-forme(black, 24px);
+    background-color : $couleur-encart;
+    width: 340px;
+    border-radius: 5px;
+    position: fixed;
+    left: 70%;
+    right: 10%;
+    bottom: 0%;
+    top: 95%;
+    padding: 0px 20px;
+}

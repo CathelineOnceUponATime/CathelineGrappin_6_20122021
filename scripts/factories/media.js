@@ -16,7 +16,7 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     infoPhotographe.appendChild(villePays)
     infoPhotographe.appendChild(tagLine)
     article.appendChild(infoPhotographe)
-    return (article)
+    return article
   }
 
   function getPhotographeImage () {
@@ -24,8 +24,22 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     img.setAttribute('src', picture)
     return img
   }
-
-  return { picture, data, getPhotographeEntete, getPhotographeImage }
+  function getEncart () {
+    const article = document.createElement('article')
+    const nbLikes = document.createElement('p')
+    const icone = document.createElement('i')
+    const tarif = document.createElement('p')
+    article.classList.add('encart')
+    nbLikes.textContent = data.nbLikesTotal
+    icone.classList.add('fas')
+    icone.classList.add('fa-heart')
+    nbLikes.appendChild(icone)
+    tarif.textContent = data.prix + '€ / jour'
+    article.appendChild(nbLikes)
+    article.appendChild(tarif)
+    return article
+  }
+  return { picture, data, getPhotographeEntete, getPhotographeImage, getEncart }
 }
 
 function mediaFactory (data) { // eslint-disable-line no-unused-vars
@@ -65,7 +79,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     divMedia.appendChild(h2)
     divMedia.appendChild(likes)
     article.appendChild(divMedia)
-    return (article)
+    return article
   }
   if (data.image === undefined) {
     return { lienVideo, data, getMediaCardDOM }

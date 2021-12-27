@@ -16,7 +16,7 @@ function photographerFactory (data) { // eslint-disable-line no-unused-vars
     tagLine.classList.add('tagLine')
     villePays.textContent = data.ville + ', ' + data.pays
     villePays.classList.add('ville')
-    prix.textContent = data.prix + '€/jour'
+    prix.textContent = data.prix + '€ / jour'
     prix.classList.add('prix')
     article.appendChild(lien)
     lien.appendChild(img)

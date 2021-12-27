@@ -15,6 +15,7 @@ class Photographe {
     this.prix = prix
     this.portrait = portrait
     this.tMedia = []
+    this.nbLikesTotal = 0
   }
 }
 
@@ -69,6 +70,7 @@ async function getMedias (lesPhotographes) {
         mediaCourant.likes = lesPhotographes.media[j].likes
         mediaCourant.date = lesPhotographes.media[j].date
         mediaCourant.prix = lesPhotographes.media[j].price
+        tabPhotographes[k].nbLikesTotal += parseInt(mediaCourant.likes)
         tabPhotographes[k].tMedia.push(mediaCourant)
       }
     }
@@ -85,6 +87,8 @@ async function afficheMedia (tphotographes) {
       const photographe = photographeEntete(photographer)
       const photographeTete = photographe.getPhotographeEntete()
       const photographeImage = photographe.getPhotographeImage()
+      const photographeEncart = photographe.getEncart()
+      mediasSection.parentElement.appendChild(photographeEncart)
       photographeHeader.insertBefore(photographeTete, photographeHeader.firstChild)
       photographeHeader.appendChild(photographeImage)
 

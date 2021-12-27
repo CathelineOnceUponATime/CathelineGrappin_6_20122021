@@ -14,6 +14,7 @@ class Photographe {
     this.prix = prix
     this.portrait = portrait
     this.tMedia = []
+    this.nbLikesTotal = 0
   }
 }
 
