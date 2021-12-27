@@ -1,6 +1,7 @@
 form {
     @include en-flex(column, normal, flex-start);
     width: 100%;
+    margin: 26px 0px;
     label {
         color: #312E2E;
         font-size: 36px;
@@ -8,11 +9,15 @@ form {
     div {
         @include en-flex(column, normal, self-start);
         width: 100%;
-        margin-bottom: 26px;
+        margin: 26px 0px;
     }
     input {
         width: 100%;
         height: 68px;
+        border: none;
+        border-radius: 5px;
+    }
+    textarea {
         border: none;
         border-radius: 5px;
     }

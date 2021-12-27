@@ -1,5 +1,5 @@
 // Mettre le code JavaScript lié à la page photographer.html
-/* global mediaFactory, fetch, photographeEntete */
+/* global mediaFactory, fetch, photographeEntete, encart */
 /* eslint no-undef: "error" */
 
 let tabPhotographes = []
@@ -87,8 +87,9 @@ async function afficheMedia (tphotographes) {
       const photographe = photographeEntete(photographer)
       const photographeTete = photographe.getPhotographeEntete()
       const photographeImage = photographe.getPhotographeImage()
-      const photographeEncart = photographe.getEncart()
-      mediasSection.parentElement.appendChild(photographeEncart)
+      const photographeEncart = encart(photographer)
+      const photographeGetEncart = photographeEncart.getEncart()
+      mediasSection.parentElement.appendChild(photographeGetEncart)
       photographeHeader.insertBefore(photographeTete, photographeHeader.firstChild)
       photographeHeader.appendChild(photographeImage)
 

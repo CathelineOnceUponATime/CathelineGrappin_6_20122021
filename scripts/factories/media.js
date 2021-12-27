@@ -24,13 +24,17 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     img.setAttribute('src', picture)
     return img
   }
+  return { picture, data, getPhotographeEntete, getPhotographeImage }
+}
+
+function encart (data) { // eslint-disable-line no-unused-vars
   function getEncart () {
     const article = document.createElement('article')
     const nbLikes = document.createElement('p')
     const icone = document.createElement('i')
     const tarif = document.createElement('p')
     article.classList.add('encart')
-    nbLikes.textContent = data.nbLikesTotal
+    nbLikes.textContent = data.nbLikesTotal + ' '
     icone.classList.add('fas')
     icone.classList.add('fa-heart')
     nbLikes.appendChild(icone)
@@ -39,7 +43,7 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     article.appendChild(tarif)
     return article
   }
-  return { picture, data, getPhotographeEntete, getPhotographeImage, getEncart }
+  return { data, getEncart }
 }
 
 function mediaFactory (data) { // eslint-disable-line no-unused-vars
@@ -61,7 +65,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     lien.href = '#'
     icone.classList.add('fas')
     icone.classList.add('fa-heart')
-    likes.textContent = data.likes
+    likes.textContent = data.likes + ' '
     likes.classList.add('like')
     article.appendChild(lien)
     if (data.image === undefined) {
