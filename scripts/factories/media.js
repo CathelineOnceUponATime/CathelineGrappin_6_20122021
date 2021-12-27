@@ -88,7 +88,8 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     divMedia.appendChild(likes)
     article.appendChild(divMedia)
     icone.addEventListener('click', function () {
-      likes.textContent = (data.likes++) + ' '
+      data.likes++
+      likes.textContent = data.likes + ' '
       likes.appendChild(icone)
       nbLikes = parseInt(nbLikesTotal.textContent)
       nbLikes++
