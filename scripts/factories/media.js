@@ -66,6 +66,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     let nbLikes = 0
     article.classList.add('media')
     h2.textContent = data.titre
+    h2.classList.add(data.id)
     img.addEventListener('click', function () {
       const mediasSection = document.querySelector('.media_section')
       const lightBox = getLightbox()
@@ -83,11 +84,11 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       video.width = 400
       video.preload = 'metadata'
       video.appendChild(source)
-      video.id = data.id
+      video.classList.add(data.id)
       lien.appendChild(video)
     } else {
       img.setAttribute('src', picture)
-      img.id = data.id
+      img.classList.add(data.id)
       lien.appendChild(img)
     }
     likes.appendChild(icone)
@@ -128,17 +129,23 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     }
   }
 
-  function getMediaSuivPrec (bSuivant, image) {
+  function getMediaSuivPrec (bSuivant, image, source, figCaption) {
     let photoSuivante
+    let titreSuivant
     let photoSuivanteId
     let photoPrecedente
+    let titrePrecedent
     let photoPrecedenteId
     let indiceSuivant
     let indicePrecedent
     let k
-    const photos = document.querySelectorAll('.media > a > img')
+    let bVideo = false
+
+    const photos = document.querySelectorAll('.media > a')
+
     for (let j = 0; j < photos.length; j++) {
-      if (parseInt(photos[j].id) === data.id) {
+      if (parseInt(photos[j].firstChild.classList[0]) === data.id) {
+        bVideo = false
         k = j
         indiceSuivant = (j + 1)
         j = k
@@ -146,32 +153,78 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
         j = k
         switch (j) {
           case photos.length - 1 :
-            photoSuivante = photos[0].src
-            photoSuivanteId = photos[0].id
-            photoPrecedente = photos[indicePrecedent].src
-            photoPrecedenteId = photos[indicePrecedent].id
+            if ((bSuivant) && (photos[0].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoSuivante = photos[0].firstChild.firstChild.src
+            } else {
+              photoSuivante = photos[0].firstChild.src
+            }
+            titreSuivant = photos[0].parentElement.lastChild.firstChild.textContent
+            photoSuivanteId = photos[0].firstChild.classList[0]
+            if ((!bSuivant) && (photos[indicePrecedent].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoPrecedente = photos[indicePrecedent].firstChild.firstChild.src
+            } else {
+              photoPrecedente = photos[indicePrecedent].firstChild.src
+            }
+            titrePrecedent = photos[indicePrecedent].parentElement.lastChild.firstChild.textContent
+            photoPrecedenteId = photos[indicePrecedent].firstChild.classList[0]
             break
           case 0 :
-            photoPrecedente = photos[photos.length - 1].src
-            photoPrecedenteId = photos[photos.length - 1].id
-            photoSuivante = photos[indiceSuivant].src
-            photoSuivanteId = photos[indiceSuivant].id
+            titrePrecedent = photos[photos.length - 1].parentElement.lastChild.firstChild.textContent
+            if ((!bSuivant) && (photos[photos.length - 1].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoPrecedente = photos[photos.length - 1].firstChild.firstChild.src
+            } else {
+              photoPrecedente = photos[photos.length - 1].firstChild.src
+            }
+            photoPrecedenteId = photos[photos.length - 1].firstChild.classList[0]
+            titreSuivant = photos[indiceSuivant].parentElement.lastChild.firstChild.textContent
+            if ((bSuivant) && (photos[indiceSuivant].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoSuivante = photos[indiceSuivant].firstChild.firstChild.src
+            } else {
+              photoSuivante = photos[indiceSuivant].firstChild.src
+            }
+            photoSuivanteId = photos[indiceSuivant].firstChild.classList[0]
             break
           default :
-            photoSuivante = photos[indiceSuivant].src
-            photoSuivanteId = photos[indiceSuivant].id
-            photoPrecedente = photos[indicePrecedent].src
-            photoPrecedenteId = photos[indicePrecedent].id
+            titreSuivant = photos[indiceSuivant].parentElement.lastChild.firstChild.textContent
+            if ((bSuivant) && (photos[indiceSuivant].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoSuivante = photos[indiceSuivant].firstChild.firstChild.src
+            } else {
+              photoSuivante = photos[indiceSuivant].firstChild.src
+            }
+            photoSuivanteId = photos[indiceSuivant].firstChild.classList[0]
+            titrePrecedent = photos[indicePrecedent].parentElement.lastChild.firstChild.textContent
+            if ((!bSuivant) && (photos[indicePrecedent].firstChild.tagName === 'VIDEO')) {
+              bVideo = true
+              photoPrecedente = photos[indicePrecedent].firstChild.firstChild.src
+            } else {
+              photoPrecedente = photos[indicePrecedent].firstChild.src
+            }
+            photoPrecedenteId = photos[indicePrecedent].firstChild.classList[0]
             break
         }
         break
       }
     }
     if (bSuivant) {
-      image.setAttribute('src', photoSuivante)
+      if (bVideo) {
+        source.setAttribute('src', photoSuivante)
+      } else {
+        image.setAttribute('src', photoSuivante)
+      }
+      figCaption.textContent = titreSuivant
       data.id = parseInt(photoSuivanteId)
     } else {
-      image.setAttribute('src', photoPrecedente)
+      if (bVideo) {
+        source.setAttribute('src', photoPrecedente)
+      } else {
+        image.setAttribute('src', photoPrecedente)
+      }
+      figCaption.textContent = titrePrecedent
       data.id = parseInt(photoPrecedenteId)
     }
   }
@@ -211,10 +264,10 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     fig.appendChild(iconeF)
     fig.appendChild(figCaption)
     iconeFD.addEventListener('click', function () {
-      getMediaSuivPrec(true, image)
+      getMediaSuivPrec(true, image, source, figCaption)
     })
     iconeFG.addEventListener('click', function () {
-      getMediaSuivPrec(false, image)
+      getMediaSuivPrec(false, image, source, figCaption)
     })
     iconeF.addEventListener('click', function () {
       afficheLightBox(true)
