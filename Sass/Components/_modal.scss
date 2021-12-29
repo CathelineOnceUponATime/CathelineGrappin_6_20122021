@@ -1,6 +1,6 @@
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: $couleur-formulaire;
     width: 50%;
     @include en-flex(column, space-between, center);
     padding: 35px;

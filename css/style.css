@@ -27,19 +27,6 @@ h1 {
   display: none;
 }
 
-.contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -127,6 +114,7 @@ h1 {
 }
 
 form {
+  font-family: "DM Sans";
   display: flex;
   flex-direction: column;
   justify-content: normal;
@@ -149,20 +137,39 @@ form div {
   margin: 26px 0px;
 }
 form input {
+  font-size: 36px;
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
 }
 form textarea {
+  font-size: 36px;
   border: none;
   border-radius: 5px;
   width: 100%;
 }
 
+.contact_button {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contact_button:hover, .contact_button:focus {
+  background-color: #d3573c;
+  color: black;
+}
+
 .modal {
   border-radius: 5px;
-  background-color: #DB8876;
+  background-color: #db8876;
   width: 50%;
   display: flex;
   flex-direction: column;

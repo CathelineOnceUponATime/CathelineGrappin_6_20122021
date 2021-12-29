@@ -28,6 +28,7 @@
     margin-top: 50px;
     @include en-flex(row, space-around, normal, wrap);
 }
+
 .media{
     div{
         @include en-flex(row, space-between, center);
@@ -50,6 +51,7 @@
         border-radius: 5px;
     }
 }
+
 .encart {
     @include en-flex(row, space-between, center);
     @include en-forme(black, 24px);

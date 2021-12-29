@@ -1,0 +1,15 @@
+.contact_button {
+    @include en-forme(white, 20px);
+    font-weight: bold;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $couleur-secondaire;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover, &:focus {
+        background-color: $couleur-primaire;
+        color: black;
+    }
+}

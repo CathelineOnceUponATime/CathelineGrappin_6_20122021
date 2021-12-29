@@ -53,8 +53,6 @@ function displayModal () { // eslint-disable-line no-unused-vars
     }
     return photographeCourant
   }
-  /* const header = document.getElementsByTagName('header')
-  header[0].style.display = 'none' */
 }
 
 function closeModal () { // eslint-disable-line no-unused-vars
@@ -62,9 +60,6 @@ function closeModal () { // eslint-disable-line no-unused-vars
   modal.style.display = 'none'
   const main = document.getElementById('main')
   main.style.display = 'block'
-  window.location.reload()
-  /* const header = document.getElementsByTagName('header')
-  header[0].style.display = 'block' */
 }
 
 function envoiMessage () { // eslint-disable-line no-unused-vars
@@ -75,7 +70,11 @@ function envoiMessage () { // eslint-disable-line no-unused-vars
   const email = document.getElementById('idEmail')
   const message = document.getElementById('idMessage')
 
-  console.log('prenom : ' + prenom.value + ' nom : ' + nom.value + ' email : ' + email.value + ' message : ' + message.value)
+  console.log(' prénom : ' + prenom.value + '\n nom : ' + nom.value + '\n email : ' + email.value + '\n message : ' + message.value)
+  prenom.value = ''
+  nom.value = ''
+  email.value = ''
+  message.value = ''
   closeModal()
   return false
 }
