@@ -1,4 +1,4 @@
-.figure {
+#figure {
     @include en-flex(row, space-between, center);
     i {
         @include en-forme($couleur-secondaire, 72px);
@@ -9,13 +9,14 @@
         left: 94%;
     }
     figcaption {
+        @include en-forme($couleur-secondaire, 24px);
         position: absolute;
-        bottom: 13%;
-        right: 87%;
+        bottom: 10%;
+        left: 7%;
     }
     img {
         width: 1050px;
         height: 900px;
-        object-fit: cover;
+        object-fit: contain;
     }
 }

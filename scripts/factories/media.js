@@ -67,7 +67,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     article.classList.add('media')
     h2.textContent = data.titre
     h2.classList.add(data.id)
-    img.addEventListener('click', function () {
+    lien.addEventListener('click', function () {
       const mediasSection = document.querySelector('.media_section')
       const lightBox = getLightbox()
       mediasSection.parentElement.appendChild(lightBox)
@@ -80,8 +80,10 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     article.appendChild(lien)
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
-      video.controls = true
-      video.width = 400
+      video.controls = false
+      video.width = 350
+      video.height = 300
+      video.style.objectFit = 'cover'
       video.preload = 'metadata'
       video.appendChild(source)
       video.classList.add(data.id)
@@ -113,15 +115,13 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const header = document.getElementsByClassName('photograph-header')
     const mediaSection = document.getElementsByClassName('media_section')
     const encart = document.getElementsByClassName('encart')
-    const figure = document.getElementsByClassName('figure')
+    const figure = document.getElementById('figure')
 
     if (bAffiche) {
       header[0].style.display = 'flex'
       mediaSection[0].style.display = 'flex'
       encart[0].style.display = 'flex'
-      for (let i = 0; i < figure.length; i++) {
-        figure[i].style.display = 'none'
-      }
+      figure.parentElement.removeChild(figure)
     } else {
       header[0].style.display = 'none'
       mediaSection[0].style.display = 'none'
@@ -129,7 +129,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     }
   }
 
-  function getMediaSuivPrec (bSuivant, image, source, figCaption) {
+  function getMediaSuivPrec (bSuivant, image, fig, figCaption) {
     let photoSuivante
     let titreSuivant
     let photoSuivanteId
@@ -140,6 +140,8 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     let indicePrecedent
     let k
     let bVideo = false
+    const video = document.createElement('video')
+    const source = document.createElement('source')
 
     const photos = document.querySelectorAll('.media > a')
 
@@ -210,22 +212,38 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
         break
       }
     }
-    if (bSuivant) {
-      if (bVideo) {
+    video.controls = true
+    video.width = 1050
+    video.height = 900
+    video.preload = 'metadata'
+    video.appendChild(source)
+    if (bVideo) {
+      fig.replaceChild(video, image)
+      if (bSuivant) {
         source.setAttribute('src', photoSuivante)
+        figCaption.textContent = titreSuivant
+        data.id = parseInt(photoSuivanteId)
       } else {
-        image.setAttribute('src', photoSuivante)
-      }
-      figCaption.textContent = titreSuivant
-      data.id = parseInt(photoSuivanteId)
-    } else {
-      if (bVideo) {
         source.setAttribute('src', photoPrecedente)
+        figCaption.textContent = titrePrecedent
+        data.id = parseInt(photoPrecedenteId)
+      }
+    } else {
+      for (let y = 0; y < fig.children.length; y++) {
+        if (fig.children[y].tagName === 'VIDEO') {
+          fig.removeChild(fig.children[y])
+          fig.insertBefore(image, fig.children[1])
+        }
+      }
+      if (bSuivant) {
+        image.setAttribute('src', photoSuivante)
+        figCaption.textContent = titreSuivant
+        data.id = parseInt(photoSuivanteId)
       } else {
         image.setAttribute('src', photoPrecedente)
+        figCaption.textContent = titrePrecedent
+        data.id = parseInt(photoPrecedenteId)
       }
-      figCaption.textContent = titrePrecedent
-      data.id = parseInt(photoPrecedenteId)
     }
   }
 
@@ -245,13 +263,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     iconeF.classList.add('fas')
     iconeF.classList.add('fa-times')
     figCaption.textContent = data.titre
-    fig.classList.add('figure')
+    fig.id = 'figure'
     fig.appendChild(iconeFG)
 
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
       video.controls = true
-      video.width = 400
+      video.width = 1050
+      video.height = 900
       video.preload = 'metadata'
       video.appendChild(source)
       fig.appendChild(video)
@@ -264,10 +283,10 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     fig.appendChild(iconeF)
     fig.appendChild(figCaption)
     iconeFD.addEventListener('click', function () {
-      getMediaSuivPrec(true, image, source, figCaption)
+      getMediaSuivPrec(true, image, fig, figCaption)
     })
     iconeFG.addEventListener('click', function () {
-      getMediaSuivPrec(false, image, source, figCaption)
+      getMediaSuivPrec(false, image, fig, figCaption)
     })
     iconeF.addEventListener('click', function () {
       afficheLightBox(true)

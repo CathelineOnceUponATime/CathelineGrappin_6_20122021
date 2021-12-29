@@ -237,31 +237,33 @@ form textarea {
   font-size: 9px;
 }
 
-.figure {
+#figure {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
 }
-.figure i {
+#figure i {
   color: #901c1c;
   font-size: 72px;
 }
-.figure .fa-times {
+#figure .fa-times {
   position: absolute;
   top: 9%;
   left: 94%;
 }
-.figure figcaption {
+#figure figcaption {
+  color: #901c1c;
+  font-size: 24px;
   position: absolute;
-  bottom: 13%;
-  right: 87%;
+  bottom: 10%;
+  left: 7%;
 }
-.figure img {
+#figure img {
   width: 1050px;
   height: 900px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=style.css.map */
