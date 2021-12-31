@@ -1,3 +1,4 @@
+/* eslint-env jquery */
 function photographeEntete (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/photographers/${data.portrait}`
 
@@ -45,6 +46,139 @@ function encart (data) { // eslint-disable-line no-unused-vars
     return article
   }
   return { data, getEncart }
+}
+
+function tri (data) { // eslint-disable-line no-unused-vars
+  function trier (type) {
+    const sortByMapped = (map, compareFn) => (a, b) => compareFn(map(a), map(b))
+    const byValue = (a, b) => b - a
+    let toTri
+    switch (type) {
+      case 'Popularité' : {
+        toTri = e => e.likes
+        const byPopularite = sortByMapped(toTri, byValue)
+        data.tMedia.sort(byPopularite)
+        break
+      }
+      case 'Date' : {
+        toTri = e => new Date(e.date).getTime()
+        const byDate = sortByMapped(toTri, byValue)
+        data.tMedia.sort(byDate)
+        break
+      }
+      case 'Titre' : {
+        const sortBySensitivity = sensitivity => (a, b) => a.localeCompare(b, undefined, { sensitivity })
+        toTri = e => e.titre
+        const byTitre = sortByMapped(toTri, sortBySensitivity('variant'))
+        data.tMedia.sort(byTitre)
+        break
+      }
+    }
+    return data.tMedia
+  }
+
+  function getTri () {
+    const groupe = document.createElement('div')
+    const pTrier = document.createElement('p')
+    const ensembleTri = document.createElement('div')
+    const select = document.createElement('select')
+    const popularite = document.createElement('option')
+    const date = document.createElement('option')
+    const titre = document.createElement('option')
+
+    groupe.classList.add('groupe')
+    pTrier.textContent = 'Trier par'
+    pTrier.classList.add('pTrier')
+    ensembleTri.classList.add('select')
+    ensembleTri.appendChild(select)
+    popularite.textContent = 'Popularité'
+    popularite.value = 'Popularité'
+    date.textContent = 'Date'
+    date.value = 'Date'
+    titre.textContent = 'Titre'
+    titre.value = 'Titre'
+    popularite.classList.add('option')
+    date.classList.add('option')
+    titre.classList.add('option')
+    select.id = 'selectBox'
+    select.classList.add('s-hidden')
+
+    select.appendChild(popularite)
+    select.appendChild(date)
+    select.appendChild(titre)
+    groupe.appendChild(pTrier)
+    groupe.appendChild(ensembleTri)
+
+    return groupe
+  }
+
+  function enFormeTri () {
+    const selectTri = document.getElementById('selectBox')
+    const elmtSelect = document.createElement('div')
+    elmtSelect.classList.add('styledSelect')
+    const options = document.createElement('ul')
+    const icone = document.createElement('i')
+    icone.classList.add('fas')
+    icone.classList.add('fa-chevron-down')
+    options.classList.add('options')
+    for (let i = 0; i < selectTri.children.length; i++) {
+      const option = document.createElement('li')
+      selectTri.classList.add('s-hidden')
+      option.textContent = selectTri.children[i].textContent
+      option.rel = selectTri.children[i].value
+      options.appendChild(option)
+    }
+    selectTri.parentElement.appendChild(elmtSelect)
+    selectTri.parentElement.appendChild(options)
+    elmtSelect.addEventListener('click', function (e) {
+      e.stopPropagation()
+      if (options.style.display === 'none') {
+        elmtSelect.classList.add('active')
+        $('ul.options').toggle()
+        icone.style.transform = 'rotate(180deg)'
+      } else {
+        $('ul.options').toggle()
+        icone.style.transform = 'rotate(0deg)'
+      }
+    })
+    const listItems = document.getElementsByTagName('li')
+    for (let i = 0; i < listItems.length; i++) {
+      listItems[i].addEventListener('click', function (e) {
+        e.stopPropagation()
+        elmtSelect.textContent = listItems[i].textContent
+        elmtSelect.appendChild(icone)
+        icone.style.transform = 'rotate(0deg)'
+        listItems[i].style.display = 'none'
+        trier(elmtSelect.textContent)
+        const mediasSection = document.querySelector('.media_section')
+        while (mediasSection.children.length !== 0) {
+          mediasSection.removeChild(mediasSection.children[mediasSection.children.length - 1])
+        }
+        if (mediasSection.children.length === 0) {
+          data.tMedia.forEach((media) => {
+            const mediaModel = mediaFactory(media)
+            const userCardDOM = mediaModel.getMediaCardDOM()
+            mediasSection.appendChild(userCardDOM)
+          })
+        }
+        selectTri.classList.remove('active')
+        $('#selectBox').val($('#selectBox').attr('rel'))
+        $('ul').hide()
+        for (let j = 0; j < listItems.length; j++) {
+          if (j !== i) {
+            listItems[j].style.display = 'block'
+          }
+        }
+      })
+    }
+    $(document).click(function () {
+      elmtSelect.classList.remove('active')
+      $('ul').hide()
+      icone.style.transform = 'rotate(0deg)'
+    })
+    listItems[0].click()
+  }
+  return { data, getTri, enFormeTri, trier }
 }
 
 function mediaFactory (data) { // eslint-disable-line no-unused-vars

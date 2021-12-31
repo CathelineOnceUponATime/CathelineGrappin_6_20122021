@@ -1,0 +1,65 @@
+.groupe {
+    @include en-flex(row);
+    align-items: center;
+    margin: 30px;
+}
+.pTrier {
+    @include en-forme(black, 18px);
+    margin : 30px 30px 30px 0px;
+}
+.s-hidden {
+    visibility : hidden;
+    padding-right : 10px;
+    width: 200px;
+}
+.select {
+    cursor : pointer;
+    display : inline-block;
+    position : relative;
+    color : white;
+}
+.styledSelect {
+    display : flex;
+    flex-direction : row;
+    align-items : center;
+    justify-content : space-between;
+    position : absolute;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    left : 0;
+    background-color : $couleur-secondaire;
+    padding : 20px;
+    font-weight :bold;
+    font-size : 18px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color : $couleur-secondaire;
+}
+.options {
+    display : none;
+    position : absolute;
+    top : 160%;
+    right : 0;
+    left : 0; 
+    z-index : 999;
+    margin : 0 0;
+    padding : 0 0;
+    list-style : none;
+    background-color : $couleur-secondaire;
+    -webkit-box-shadow : 0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow : 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow : 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    border-top : 1px solid #ccc;
+    padding : 0 6px;
+    margin : 10px;
+    padding : 0 10px;
+    font-size : 18px;
+    width: 80%;
+}
+.options li:hover {
+    background-color: $couleur-primaire;
+    color:white;
+}

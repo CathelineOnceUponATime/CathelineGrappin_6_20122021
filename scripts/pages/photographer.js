@@ -1,5 +1,5 @@
 // Mettre le code JavaScript lié à la page photographer.html
-/* global mediaFactory, fetch, photographeEntete, encart */
+/* global mediaFactory, fetch, photographeEntete, encart, tri */
 /* eslint no-undef: "error" */
 
 let tabPhotographes = []
@@ -89,15 +89,20 @@ async function afficheMedia (tphotographes) {
       const photographeImage = photographe.getPhotographeImage()
       const photographeEncart = encart(photographer)
       const photographeGetEncart = photographeEncart.getEncart()
+      const triMedia = tri(photographer)
+      const tabPopularite = triMedia.trier('Popularité')
+      const select = triMedia.getTri()
+      mediasSection.parentElement.insertBefore(select, mediasSection.parentElement.children[1])
       mediasSection.parentElement.appendChild(photographeGetEncart)
       photographeHeader.insertBefore(photographeTete, photographeHeader.firstChild)
       photographeHeader.appendChild(photographeImage)
-
+      photographer.tMedia = tabPopularite
       photographer.tMedia.forEach((media) => {
         const mediaModel = mediaFactory(media)
         const userCardDOM = mediaModel.getMediaCardDOM()
         mediasSection.appendChild(userCardDOM)
       })
+      triMedia.enFormeTri()
     }
   })
 }
