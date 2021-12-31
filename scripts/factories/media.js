@@ -250,16 +250,19 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const mediaSection = document.getElementsByClassName('media_section')
     const encart = document.getElementsByClassName('encart')
     const figure = document.getElementById('figure')
+    const groupeFiltre = document.getElementsByClassName('groupe')
 
     if (bAffiche) {
       header[0].style.display = 'flex'
       mediaSection[0].style.display = 'flex'
       encart[0].style.display = 'flex'
+      groupeFiltre[0].style.display = 'flex'
       figure.parentElement.removeChild(figure)
     } else {
       header[0].style.display = 'none'
       mediaSection[0].style.display = 'none'
       encart[0].style.display = 'none'
+      groupeFiltre[0].style.display = 'none'
     }
   }
 
