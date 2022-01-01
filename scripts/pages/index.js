@@ -5,7 +5,7 @@ let tphotographes = []
 let photographers
 
 class Photographe {
-  constructor (id, nom, ville, pays, tagLine, prix, portrait) {
+  constructor (id, nom, ville, pays, tagLine, prix, portrait, description) {
     this.id = id
     this.nom = nom
     this.ville = ville
@@ -13,6 +13,7 @@ class Photographe {
     this.tagLine = tagLine
     this.prix = prix
     this.portrait = portrait
+    this.description = description
     this.tMedia = []
     this.nbLikesTotal = 0
   }
@@ -29,6 +30,7 @@ async function getPhotographers (photographers) {
     photographeCourant.tagLine = photographers.photographers[i].tagline
     photographeCourant.portrait = photographers.photographers[i].portrait
     photographeCourant.prix = photographers.photographers[i].price
+    photographeCourant.description = photographers.photographers[i].description
     tphotographes.push(photographeCourant)
   }
   return tphotographes

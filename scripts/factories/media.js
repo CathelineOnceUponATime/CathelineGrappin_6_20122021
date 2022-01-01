@@ -23,6 +23,7 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
   function getPhotographeImage () {
     const img = document.createElement('img')
     img.setAttribute('src', picture)
+    img.setAttribute('alt', data.description)
     return img
   }
   return { picture, data, getPhotographeEntete, getPhotographeImage }
@@ -32,7 +33,7 @@ function encart (data) { // eslint-disable-line no-unused-vars
   function getEncart () {
     const article = document.createElement('article')
     const nbLikes = document.createElement('p')
-    const icone = document.createElement('i')
+    const icone = document.createElement('span')
     const tarif = document.createElement('p')
     article.classList.add('encart')
     nbLikes.textContent = data.nbLikesTotal + ' '
@@ -77,18 +78,19 @@ function tri (data) { // eslint-disable-line no-unused-vars
     return data.tMedia
   }
 
+  function getLabelTri () {
+    const label = document.createElement('label')
+    label.textContent = 'Trier par'
+    label.classList.add('pTrier')
+    return label
+  }
+
   function getTri () {
-    const groupe = document.createElement('div')
-    const pTrier = document.createElement('p')
     const ensembleTri = document.createElement('div')
     const select = document.createElement('select')
     const popularite = document.createElement('option')
     const date = document.createElement('option')
     const titre = document.createElement('option')
-
-    groupe.classList.add('groupe')
-    pTrier.textContent = 'Trier par'
-    pTrier.classList.add('pTrier')
     ensembleTri.classList.add('select')
     ensembleTri.appendChild(select)
     popularite.textContent = 'Popularité'
@@ -106,18 +108,21 @@ function tri (data) { // eslint-disable-line no-unused-vars
     select.appendChild(popularite)
     select.appendChild(date)
     select.appendChild(titre)
-    groupe.appendChild(pTrier)
-    groupe.appendChild(ensembleTri)
 
-    return groupe
+    return ensembleTri
   }
 
   function enFormeTri () {
+    const label = document.createElement('label')
+    label.classList.add('s-hidden')
+    label.textContent = 'Trier par'
+    label.htmlFor = 'selectBox'
     const selectTri = document.getElementById('selectBox')
+    selectTri.parentElement.insertBefore(label, selectTri)
     const elmtSelect = document.createElement('div')
     elmtSelect.classList.add('styledSelect')
     const options = document.createElement('ul')
-    const icone = document.createElement('i')
+    const icone = document.createElement('span')
     icone.classList.add('fas')
     icone.classList.add('fa-chevron-down')
     options.classList.add('options')
@@ -178,7 +183,7 @@ function tri (data) { // eslint-disable-line no-unused-vars
     })
     listItems[0].click()
   }
-  return { data, getTri, enFormeTri, trier }
+  return { data, getLabelTri, getTri, enFormeTri, trier }
 }
 
 function mediaFactory (data) { // eslint-disable-line no-unused-vars
@@ -193,10 +198,10 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const source = document.createElement('source')
     const h2 = document.createElement('h2')
     const likes = document.createElement('p')
-    const icone = document.createElement('i')
+    const icone = document.createElement('span')
     const divMedia = document.createElement('div')
     const nbLikesTotal = document.getElementById('nbLikesTotal')
-    const iconeTotal = document.createElement('i')
+    const iconeTotal = document.createElement('span')
     let nbLikes = 0
     article.classList.add('media')
     h2.textContent = data.titre
@@ -218,12 +223,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       video.width = 350
       video.height = 300
       video.style.objectFit = 'cover'
+      video.setAttribute('alt', data.description)
       video.preload = 'metadata'
       video.appendChild(source)
       video.classList.add(data.id)
       lien.appendChild(video)
     } else {
       img.setAttribute('src', picture)
+      img.setAttribute('alt', data.description)
       img.classList.add(data.id)
       lien.appendChild(img)
     }
@@ -250,19 +257,22 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const mediaSection = document.getElementsByClassName('media_section')
     const encart = document.getElementsByClassName('encart')
     const figure = document.getElementById('figure')
-    const groupeFiltre = document.getElementsByClassName('groupe')
+    const labelTri = document.getElementsByClassName('pTrier')
+    const tri = document.getElementsByClassName('select')
 
     if (bAffiche) {
       header[0].style.display = 'flex'
       mediaSection[0].style.display = 'flex'
       encart[0].style.display = 'flex'
-      groupeFiltre[0].style.display = 'flex'
+      labelTri[0].style.display = 'inline-block'
+      tri[0].style.display = 'inline-block'
       figure.parentElement.removeChild(figure)
     } else {
       header[0].style.display = 'none'
       mediaSection[0].style.display = 'none'
       encart[0].style.display = 'none'
-      groupeFiltre[0].style.display = 'none'
+      labelTri[0].style.display = 'none'
+      tri[0].style.display = 'none'
     }
   }
 
@@ -390,9 +400,9 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const image = document.createElement('img')
     const video = document.createElement('video')
     const source = document.createElement('source')
-    const iconeFD = document.createElement('i')
-    const iconeFG = document.createElement('i')
-    const iconeF = document.createElement('i')
+    const iconeFD = document.createElement('span')
+    const iconeFG = document.createElement('span')
+    const iconeF = document.createElement('span')
     iconeFG.classList.add('fas')
     iconeFG.classList.add('fa-angle-left')
     iconeFD.classList.add('fas')
@@ -427,6 +437,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     })
     iconeF.addEventListener('click', function () {
       afficheLightBox(true)
+    })
+    $(document).keydown(function (e) {
+      const keyCode = e.keyCode ? e.keyCode : e.which
+      if (keyCode === 39) {
+        getMediaSuivPrec(true, image, fig, figCaption)
+      } else if (keyCode === 37) {
+        getMediaSuivPrec(false, image, fig, figCaption)
+      }
     })
     return fig
   }

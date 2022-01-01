@@ -6,7 +6,7 @@ let tabPhotographes = []
 let lesPhotographes
 
 class Photographe {
-  constructor (id, nom, ville, pays, tagLine, prix, portrait) {
+  constructor (id, nom, ville, pays, tagLine, prix, portrait, description) {
     this.id = id
     this.nom = nom
     this.ville = ville
@@ -14,13 +14,14 @@ class Photographe {
     this.tagLine = tagLine
     this.prix = prix
     this.portrait = portrait
+    this.description = description
     this.tMedia = []
     this.nbLikesTotal = 0
   }
 }
 
 class Media {
-  constructor (id, photographeId, titre, image, video, likes, date, prix) {
+  constructor (id, photographeId, titre, image, video, likes, date, prix, description) {
     this.id = id
     this.photographeId = photographeId
     this.titre = titre
@@ -29,6 +30,7 @@ class Media {
     this.likes = likes
     this.date = date
     this.prix = prix
+    this.description = description
   }
 }
 
@@ -53,6 +55,7 @@ async function getMedias (lesPhotographes) {
     photographeCourant.tagLine = lesPhotographes.photographers[i].tagline
     photographeCourant.portrait = lesPhotographes.photographers[i].portrait
     photographeCourant.prix = lesPhotographes.photographers[i].price
+    photographeCourant.description = lesPhotographes.photographers[i].description
     tabPhotographes.push(photographeCourant)
   }
   for (let k = 0; k < tabPhotographes.length; k++) {
@@ -70,6 +73,7 @@ async function getMedias (lesPhotographes) {
         mediaCourant.likes = lesPhotographes.media[j].likes
         mediaCourant.date = lesPhotographes.media[j].date
         mediaCourant.prix = lesPhotographes.media[j].price
+        mediaCourant.description = lesPhotographes.media[j].description
         tabPhotographes[k].nbLikesTotal += parseInt(mediaCourant.likes)
         tabPhotographes[k].tMedia.push(mediaCourant)
       }
@@ -91,8 +95,10 @@ async function afficheMedia (tphotographes) {
       const photographeGetEncart = photographeEncart.getEncart()
       const triMedia = tri(photographer)
       const tabPopularite = triMedia.trier('Popularité')
+      const label = triMedia.getLabelTri()
       const select = triMedia.getTri()
       mediasSection.parentElement.insertBefore(select, mediasSection.parentElement.children[1])
+      mediasSection.parentElement.insertBefore(label, mediasSection.parentElement.children[1])
       mediasSection.parentElement.appendChild(photographeGetEncart)
       photographeHeader.insertBefore(photographeTete, photographeHeader.firstChild)
       photographeHeader.appendChild(photographeImage)

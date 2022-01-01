@@ -23,10 +23,6 @@ h1 {
   margin-left: 100px;
 }
 
-#contact_modal {
-  display: none;
-}
-
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -113,6 +109,33 @@ h1 {
   padding: 0px 20px;
 }
 
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 35px;
+  margin: auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+}
+.modal header img {
+  cursor: pointer;
+}
+.modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
 form {
   font-family: "DM Sans";
   display: flex;
@@ -180,7 +203,7 @@ form textarea {
 .pTrier {
   color: black;
   font-size: 18px;
-  margin: 30px 30px 30px 0px;
+  margin: 30px 30px 30px 50px;
 }
 
 .s-hidden {
@@ -246,31 +269,6 @@ form textarea {
   color: white;
 }
 
-.modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  align-items: center;
-  padding: 35px;
-  margin: auto;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-}
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-.modal header img {
-  cursor: pointer;
-}
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-}
-
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -330,7 +328,7 @@ form textarea {
   flex-wrap: nowrap;
   align-items: center;
 }
-#figure i {
+#figure span {
   color: #901c1c;
   font-size: 72px;
 }

@@ -1,6 +1,6 @@
 #figure {
     @include en-flex(row, space-between, center);
-    i {
+    span {
         @include en-forme($couleur-secondaire, 72px);
     }
     .fa-times {

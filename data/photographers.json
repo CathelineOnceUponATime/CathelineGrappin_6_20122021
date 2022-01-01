@@ -7,7 +7,8 @@
 			"country": "UK",
 			"tagline": "Voir le beau dans le quotidien",
 			"price": 400,
-			"portrait": "MimiKeel.jpg"
+			"portrait": "MimiKeel.jpg",
+			"description": "Photo Portrait de Mimi Keel"
 		},
 		{
 			"name": "Ellie-Rose Wilkens",
@@ -16,7 +17,8 @@
 			"country": "France",
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
-			"portrait": "EllieRoseWilkens.jpg"
+			"portrait": "EllieRoseWilkens.jpg",
+			"description": "Photo Portrait de Ellie-Rose Wilkens"
 		},
 		{
 			"name": "Tracy Galindo",
@@ -25,7 +27,8 @@
 			"country": "Canada",
 			"tagline": "Photographe freelance",
 			"price": 500,
-			"portrait": "TracyGalindo.jpg"
+			"portrait": "TracyGalindo.jpg",
+			"description": "Photo Portrait de Tracy Galindo"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -34,7 +37,8 @@
 			"country": "Mexico",
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
-			"portrait": "NabeelBradford.jpg"
+			"portrait": "NabeelBradford.jpg",
+			"description": "Photo Portrait de Nabeel Bradford"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -43,7 +47,8 @@
 			"country": "Spain",
 			"tagline": "Je crée des souvenirs",
 			"price": 275,
-			"portrait": "RhodeDubois.jpg"
+			"portrait": "RhodeDubois.jpg",
+			"description": "Photo Portrait de Rhode Dubois"
 		},
 		{
 			"name": "Marcel Nikolic",
@@ -52,7 +57,8 @@
 			"country": "Germany",
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
-			"portrait": "MarcelNikolic.jpg"
+			"portrait": "MarcelNikolic.jpg",
+			"description": "Photo Portrait de Marcel Nikolic"
 		}
 	],
 	"media": [
@@ -63,7 +69,8 @@
 			"image": "Fashion_Yellow_Beach.jpg",
 			"likes": 62,
 			"date": "2011-12-08",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une femme en jogging jaune devant un panier de basket au bord de la mer"
 		},
 		{
 			"id": 8520927,
@@ -72,7 +79,8 @@
 			"image": "Fashion_Urban_Jungle.jpg",
 			"likes": 11,
 			"date": "2011-11-06",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une femme dans une tenue verte à feuilles sur un pont dans la rue"
 		},
 		{
 			"id": 9025895,
@@ -81,7 +89,8 @@
 			"image": "Fashion_Pattern_on_Pattern.jpg",
 			"likes": 72,
 			"date": "2013-08-12",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une femme portant une tenue jaune, noire et bleue avec un sac rouge"
 		},
 		{
 			"id": 9275938,
@@ -90,7 +99,8 @@
 			"image": "Event_WeddingGazebo.jpg",
 			"likes": 69,
 			"date": "2018-02-22",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant un autel en attendant une céromonie, des chaises blanches et des fleurs"
 		},
 		{
 			"id": 2053494,
@@ -99,7 +109,8 @@
 			"image": "Event_Sparklers.jpg",
 			"likes": 2,
 			"date": "2020-05-25",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une femme et un homme se rendant à une soirée"
 		},
 		{
 			"id": 7324238,
@@ -108,7 +119,8 @@
 			"image": "Event_18thAnniversary.jpg",
 			"likes": 33,
 			"date": "2019-06-12",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une table avec des couverts, des verres, une bouteille de vin dans une salle avec le nombre 18 en ballon"
 		},
 		{
 			"id": 8328953,
@@ -117,7 +129,8 @@
 			"video": "Art_Wooden_Horse_Sculpture.mp4",
 			"likes": 24,
 			"date": "2011-12-08",
-			"price": 100
+			"price": 100,
+			"description": "Vidéo représentant une sculpture d'un cheval en bois"
 		  },
 		{
 			"id": 7502053,
@@ -126,7 +139,8 @@
 			"image": "Art_Triangle_Man.jpg",
 			"likes": 88,
 			"date": "2007-05-07",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une affiche ayant pour couleurs : bleu, jaune, noir, bordeau et marron. Avec un triangle et en arrière plan un homme"
 		},
 		{
 			"id": 8523492,
@@ -135,7 +149,8 @@
 			"image": "Art_Purple_light.jpg",
 			"likes": 24,
 			"date": "2018-05-05",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant un sous-sol au murs tagué"
 		},
 		{
 			"id": 75902334,
@@ -144,7 +159,8 @@
 			"image": "Art_Mine.jpg",
 			"likes": 75,
 			"date": "2019-11-25",
-			"price": 55
+			"price": 55,
+			"description": "Photo représentant une peinture sur un mur, avec des canards bleu ou rouge"
 		},
 
 		{
@@ -154,7 +170,8 @@
 			"image": "Sport_2000_with_8.jpg",
 			"likes": 52,
 			"date": "2013-02-30",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant des hommes les uns devant les autres tirant sur une perche comme pour diriger quelque chose"
 		},
 		{
 			"id": 92758372,
@@ -163,7 +180,8 @@
 			"image": "Fashion_Wings.jpg",
 			"likes": 58,
 			"date": "2018-07-17",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant une femme noire habillée d'une combinaison bleue claire avec le bras et la main gauche levé. Un homme blanc habillé d'un costume en lin blanc est positioné derrière avec le bras et main droite levée"
 		},
 		{
 			"id": 32958383,
@@ -172,7 +190,8 @@
 			"image": "Fashion_Melody_Red_on_Stripes.jpg",
 			"likes": 11,
 			"date": "2019-08-12",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant une femme portant une robe rouge avec des mocassins blanc avec un noeud noir et blanc dans un escalier d'une rue"
 		},
 		{
 			"id": 928587383,
@@ -181,7 +200,8 @@
 			"image": "Event_VentureConference.jpg",
 			"likes": 2,
 			"date": "2019-01-02",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant une réunion, une femme debout devant un tableau blanc avec des post-its, autour d'elle il y a une table avec des personnes autour assis avec leurs ordinateurs portables"
 		},
 		{
 			"id": 725639493,
@@ -190,7 +210,8 @@
 			"image": "Event_ProductPitch.jpg",
 			"likes": 3,
 			"date": "2019-05-20",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant une réunion, un homme debout en tenue décontractée, faisant une présentation avec un écran projetant un Power-Point, avec devant lui des hommes assis sur un canapé, des chaises de bureau"
 		},
 		{
 			"id": 23394384,
@@ -199,7 +220,8 @@
 			"image": "Event_KeyboardCheck.jpg",
 			"likes": 52,
 			"date": "2019-07-18",
-			"price": 70
+			"price": 70,
+			"description": "Photo noir et blanc représentant une femme devant un clavier musical pendant un festival"
 		},
 		{
 			"id": 87367293,
@@ -208,7 +230,8 @@
 			"image": "Event_Emcee.jpg",
 			"likes": 23,
 			"date": "2018-02-22",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant une femme habillé d'un jean déchiré, avec une t-shirt à franges chantant sur une scène dans un festival"
 		},
 		{
 			"id": 593834784,
@@ -217,7 +240,8 @@
 			"image": "Animals_Majesty.jpg",
 			"likes": 52,
 			"date": "2017-03-13",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant un cerf dans une prairie"
 		},
 		{
 			"id": 83958935,
@@ -226,7 +250,8 @@
 			"video": "Animals_Puppiness.mp4",
 			"likes": 52,
 			"date": "2016-06-12",
-			"price": 70
+			"price": 70,
+			"description": "Vidéo représentant un chiot sur une plage jouant avec sa laisse"
 		},
 		{
 			"id": 394583434,
@@ -235,7 +260,8 @@
 			"video": "Travel_Rock_Mountains.mp4",
 			"likes": 23,
 			"date": "2017-03-18",
-			"price": 45
+			"price": 45,
+			"description": "Vidéo représentant une vue aérienne d'une montagne"
 		},
 		{
 			"id": 343423425,
@@ -244,7 +270,8 @@
 			"image": "Travel_Outdoor_Baths.jpg",
 			"likes": 101,
 			"date": "2017-04-03",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant un lac avec des personnes se baignant"
 		},
 		{
 			"id": 73434243,
@@ -253,7 +280,8 @@
 			"image": "Travel_Road_into_Hill.jpg",
 			"likes": 99,
 			"date": "2018-04-30",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant un route sinueuse infinie"
 		},
 		{
 			"id": 23425523,
@@ -262,7 +290,8 @@
 			"image": "Travel_Bridge_into_Forest.jpg",
 			"likes": 34,
 			"date": "2016-04-05",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant un pont qui mène à une forêt"
 		},
 		{
 			"id": 23134513,
@@ -271,7 +300,8 @@
 			"image": "Travel_Boat_Wanderer.jpg",
 			"likes": 23,
 			"date": "2017-03-18",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant une barque en bois sur l'eau menant à des montagnes"
 		},
 		{
 			"id": 92352352,
@@ -280,7 +310,8 @@
 			"image": "Portrait_Sunkissed.jpg",
 			"likes": 66,
 			"date": "2018-05-24",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant le visage d'une femme souriante"
 		},
 		{
 			"id": 34513453,
@@ -289,7 +320,8 @@
 			"image": "Portrait_Shaw.jpg",
 			"likes": 52,
 			"date": "2017-04-21",
-			"price": 45
+			"price": 45,
+			"description": "Photo noir et blanc représentant un homme regardant sur le côté"
 		},
 		{
 			"id": 23523533,
@@ -298,7 +330,8 @@
 			"image": "Portrait_Alexandra.jpg",
 			"likes": 95,
 			"date": "2018-11-02",
-			"price": 45
+			"price": 45,
+			"description": "Photo noir et blanc représentant une femme"
 		},
 		{
 			"id": 525834234,
@@ -307,7 +340,8 @@
 			"image": "Portrait_AfternoonBreak.jpg",
 			"likes": 25,
 			"date": "2019-01-02",
-			"price": 45
+			"price": 45,
+			"description": "Photo noir et blanc représentant un homme fumant une cigarette"
 		},
 
 		{
@@ -317,7 +351,8 @@
 			"image": "Travel_Lonesome.jpg",
 			"likes": 88,
 			"date": "2019-02-03",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant des collines avec une femme portant un sac à dos admirant le paysage"
 		},
 		{
 			"id": 625025343,
@@ -326,7 +361,8 @@
 			"image": "Travel_HillsideColor.jpg",
 			"likes": 85,
 			"date": "2019-04-03",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant des maisons de toutes les couleurs au bord de la mer"
 		},
 		{
 			"id": 2525345343,
@@ -335,7 +371,8 @@
 			"image": "Portrait_Wednesday.jpg",
 			"likes": 34,
 			"date": "2019-04-07",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant une petite fille allongée sur le sol avec les mains sur le visage"
 		},
 		{
 			"id": 2523434634,
@@ -344,7 +381,8 @@
 			"image": "Portrait_Nora.jpg",
 			"likes": 63,
 			"date": "2019-04-07",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant le portrait d'une femme appuyé quelque chose de rouge devant un panneau lumineux"
 		},
 		{
 			"id": 398847109,
@@ -353,7 +391,8 @@
 			"image": "Portrait_Background.jpg",
 			"likes": 55,
 			"date": "2019-06-20",
-			"price": 45
+			"price": 45,
+			"description": "Photo noir et blanc représentant une femme"
 		},
 		{
 			"id": 2534342,
@@ -362,7 +401,8 @@
 			"image": "Event_SeasideWedding.jpg",
 			"likes": 25,
 			"date": "2019-06-21",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant une table avec des courverts sur le sable"
 		},
 		{
 			"id": 65235234,
@@ -371,7 +411,8 @@
 			"image": "Event_PintoWedding.jpg",
 			"likes": 52,
 			"date": "2019-06-25",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant un couple dans une forêt le jour de leur mariage"
 		},
 		{
 			"id": 23523434,
@@ -380,7 +421,8 @@
 			"image": "Event_BenevidesWedding.jpg",
 			"likes": 77,
 			"date": "2019-06-28",
-			"price": 45
+			"price": 45,
+			"description": "Photo représentant un couple le jour de leur mariage en forêt en arrière plan il y a des chaises"
 		},
 		{
 			"id": 5234343,
@@ -389,7 +431,8 @@
 			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
 			"likes": 142,
 			"date": "2019-08-23",
-			"price": 60
+			"price": 60,
+			"description": "Vidéo représentant des cheveaux dans une prairie derrière les montagnes entrain de galoper"
 		  },
 		{
 			"id": 95234343,
@@ -398,7 +441,8 @@
 			"image": "Animals_Rainbow.jpg",
 			"likes": 59,
 			"date": "2019-07-02",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un oiseau vert, bleu, rose et orange sur une branche"
 		},
 
 		{
@@ -408,7 +452,8 @@
 			"image": "Travel_Tower.jpg",
 			"likes": 25,
 			"date": "2019-04-03",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un quartier traditionnel japonais avec deux japonaises en habit traditionnel"
 		},
 		{
 			"id": 2523434,
@@ -417,7 +462,8 @@
 			"image": "Travel_SunsetonCanals.jpg",
 			"likes": 53,
 			"date": "2019-05-06",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un quartier rempli de maisons autour d'une rivière avec des barques"
 		},
 		{
 			"id": 95293534,
@@ -426,7 +472,8 @@
 			"image": "Travel_OpenMountain.jpg",
 			"likes": 33,
 			"date": "2019-05-12",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un lac entourés d'une forêt avec au loin des montagnes"
 		},
 		{
 			"id": 356234343,
@@ -435,7 +482,8 @@
 			"image": "Travel_Bike_and_Stair.jpg",
 			"likes": 53,
 			"date": "2019-06-20",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un vélo dans une rue à côté d'un escalier et un lampadaire"
 		},
 		{
 			"id": 235234343,
@@ -444,7 +492,8 @@
 			"image": "Travel_Adventure_Door.jpg",
 			"likes": 63,
 			"date": "2019-06-26",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant à l'interieur d'un monument une fenêtre sur la vue d'une ville lointaine"
 		},
 		{
 			"id": 6234234343,
@@ -453,7 +502,8 @@
 			"image": "Architecture_Contrast.jpg",
 			"likes": 52,
 			"date": "2019-06-30",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant des monuments"
 		},
 		{
 			"id": 6525666253,
@@ -462,7 +512,8 @@
 			"image": "Architecture_On_a_hill.jpg",
 			"likes": 63,
 			"date": "2019-07-20",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant une ville à côté d'un lac et des montagnes"
 		},
 		{
 			"id": 98252523433,
@@ -471,7 +522,8 @@
 			"image": "Architecture_Dome.jpg",
 			"likes": 88,
 			"date": "2020-01-05",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant une tour vue de bas"
 		},
 		{
 			"id": 9259398453,
@@ -480,7 +532,8 @@
 			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
 			"likes": 57,
 			"date": "2020-01-20",
-			"price": 65
+			"price": 65,
+			"description": "Vidéo représentant un axe routier d'une grande ville"
 		  },
 		{
 			"id": 3523523534,
@@ -489,7 +542,8 @@
 			"image": "Architecture_Corner_Room.jpg",
 			"likes": 54,
 			"date": "2020-05-05",
-			"price": 60
+			"price": 60,
+			"description": "Photo représentant un immeuble avec une toiture bleue, un entourage blanc et des contours oranges"
 		},
 		{
 			"id": 952343423,
@@ -498,7 +552,8 @@
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
-			"price": 70
+			"price": 70,
+			"description": "Vidéo représentant une femme faisant de la gimnastique"
 		  },
 		{
 			"id": 235234343,
@@ -507,7 +562,8 @@
 			"image": "Sport_Next_Hold.jpg",
 			"likes": 101,
 			"date": "2018-03-05",
-			"price": 65
+			"price": 65,
+			"description": "Photo représentant une femme faisant de l'escalade sur un mur de pierres"
 		},
 		{
 			"id": 235343222,
@@ -516,7 +572,8 @@
 			"image": "sport_water_tunnel.jpg",
 			"likes": 103,
 			"date": "2018-03-10",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant un homme entrain de surfer sur une grande vague"
 		},
 		{
 			"id": 7775342343,
@@ -525,7 +582,8 @@
 			"image": "Sport_Sky_Cross.jpg",
 			"likes": 77,
 			"date": "2018-04-16",
-			"price": 50
+			"price": 50,
+			"description": "Photo représentant une personne skiant en plein saut sur de la neige"
 		},
 		{
 			"id": 9253445784,
@@ -534,7 +592,8 @@
 			"image": "Sport_Race_End.jpg",
 			"likes": 88,
 			"date": "2018-04-22",
-			"price": 65
+			"price": 65,
+			"description": "Photo représentant des femmes dans une compétition sportive d'un marathon"
 		},
 		{
 			"id": 22299394,
@@ -543,7 +602,8 @@
 			"image": "Sport_Jump.jpg",
 			"likes": 95,
 			"date": "2018-04-27",
-			"price": 70
+			"price": 70,
+			"description": "Photo représentant des personnes faisant du skate à côté de la mer"
 		},
 		{
 			"id": 3452342633,
@@ -552,7 +612,8 @@
 			"image": "Architecture_White_Light.jpg",
 			"likes": 52,
 			"date": "2018-05-03",
-			"price": 75
+			"price": 75,
+			"description": "Photo représentant un endroit à l'architecture blanche, aux formes arrondis sur plusieurs étages avec un plafond de verres"
 		},
 		{
 			"id": 939234243,
@@ -561,7 +622,8 @@
 			"image": "Architecture_Water_on_Modern.jpg",
 			"likes": 55,
 			"date": "2018-05-10",
-			"price": 72
+			"price": 72,
+			"description": "Photo représentant un monument à côté d'un coin d'eau"
 		},
 		{
 			"id": 222959233,
@@ -570,7 +632,8 @@
 			"image": "Architecture_Horseshoe.jpg",
 			"likes": 85,
 			"date": "2018-05-15",
-			"price": 71
+			"price": 71,
+			"description": "Photo représentant un immeuble arrondi vue du bas"
 		},
 		{
 			"id": 965933434,
@@ -579,7 +642,8 @@
 			"image": "Architecture_Cross_Bar.jpg",
 			"likes": 66,
 			"date": "2018-05-20",
-			"price": 58
+			"price": 58,
+			"description": "Photo représentant un monument rempli de vitres vue du bas"
 		},
 		{
 			"id": 777723343,
@@ -588,7 +652,8 @@
 			"image": "Architecture_Connected_Curves.jpg",
 			"likes": 79,
 			"date": "2018-05-21",
-			"price": 80
+			"price": 80,
+			"description": "Photo représentant un monument vue du bas aux formes arrondies prise en soleil au teinte bleu"
 		}
 	]
 }

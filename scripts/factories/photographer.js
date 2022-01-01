@@ -10,6 +10,7 @@ function photographerFactory (data) { // eslint-disable-line no-unused-vars
     const villePays = document.createElement('p')
     const prix = document.createElement('p')
     img.setAttribute('src', picture)
+    img.setAttribute('alt', data.description)
     h2.textContent = data.nom
     lien.href = 'photographer.html?id=' + data.id
     tagLine.textContent = data.tagLine
