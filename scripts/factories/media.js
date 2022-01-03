@@ -9,11 +9,13 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     const villePays = document.createElement('p')
     const tagLine = document.createElement('p')
     h1.textContent = data.nom
+    h1.tabIndex = '2'
     villePays.classList.add('ville')
     villePays.textContent = data.ville + ', ' + data.pays
     tagLine.classList.add('tagLine')
     tagLine.textContent = data.tagLine
     article.appendChild(h1)
+    infoPhotographe.tabIndex = '3'
     infoPhotographe.appendChild(villePays)
     infoPhotographe.appendChild(tagLine)
     article.appendChild(infoPhotographe)
@@ -24,6 +26,7 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     const img = document.createElement('img')
     img.setAttribute('src', picture)
     img.setAttribute('alt', data.description)
+    img.tabIndex = '5'
     return img
   }
   return { picture, data, getPhotographeEntete, getPhotographeImage }
@@ -44,6 +47,7 @@ function encart (data) { // eslint-disable-line no-unused-vars
     tarif.textContent = data.prix + '€ / jour'
     article.appendChild(nbLikes)
     article.appendChild(tarif)
+    article.tabIndex = '6'
     return article
   }
   return { data, getEncart }
@@ -82,6 +86,7 @@ function tri (data) { // eslint-disable-line no-unused-vars
     const label = document.createElement('label')
     label.textContent = 'Trier par'
     label.classList.add('pTrier')
+    label.tabIndex = '7'
     return label
   }
 
@@ -121,6 +126,7 @@ function tri (data) { // eslint-disable-line no-unused-vars
     selectTri.parentElement.insertBefore(label, selectTri)
     const elmtSelect = document.createElement('div')
     elmtSelect.classList.add('styledSelect')
+    elmtSelect.tabIndex = '8'
     const options = document.createElement('ul')
     const icone = document.createElement('span')
     icone.classList.add('fas')
@@ -135,6 +141,9 @@ function tri (data) { // eslint-disable-line no-unused-vars
     }
     selectTri.parentElement.appendChild(elmtSelect)
     selectTri.parentElement.appendChild(options)
+    elmtSelect.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') elmtSelect.click()
+    })
     elmtSelect.addEventListener('click', function (e) {
       e.stopPropagation()
       if (options.style.display === 'none') {
@@ -160,11 +169,13 @@ function tri (data) { // eslint-disable-line no-unused-vars
           mediasSection.removeChild(mediasSection.children[mediasSection.children.length - 1])
         }
         if (mediasSection.children.length === 0) {
-          data.tMedia.forEach((media) => {
-            const mediaModel = mediaFactory(media)
-            const userCardDOM = mediaModel.getMediaCardDOM()
+          let nbEnPlus = 0
+          for (let e = 0; e < data.tMedia.length; e++) {
+            const mediaModel = mediaFactory(data.tMedia[e])
+            const userCardDOM = mediaModel.getMediaCardDOM((e + nbEnPlus))
             mediasSection.appendChild(userCardDOM)
-          })
+            nbEnPlus += 2
+          }
         }
         selectTri.classList.remove('active')
         $('#selectBox').val($('#selectBox').attr('rel'))
@@ -172,6 +183,17 @@ function tri (data) { // eslint-disable-line no-unused-vars
         for (let j = 0; j < listItems.length; j++) {
           if (j !== i) {
             listItems[j].style.display = 'block'
+            listItems[j].tabIndex = '9'
+            listItems[j].addEventListener('keydown', (e) => {
+              if (e.code === 'Enter') {
+                listItems[j].click()
+              }
+            })
+            if (j === listItems.length - 1) {
+              listItems[j].addEventListener('focusout', (e) => {
+                elmtSelect.click()
+              })
+            }
           }
         }
       })
@@ -190,7 +212,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/images/${data.photographeId}/${data.image}`
   const lienVideo = `assets/images/${data.photographeId}/${data.video}`
 
-  function getMediaCardDOM () {
+  function getMediaCardDOM (nbMedia) {
     const article = document.createElement('article')
     const lien = document.createElement('a')
     const img = document.createElement('img')
@@ -206,6 +228,16 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     article.classList.add('media')
     h2.textContent = data.titre
     h2.classList.add(data.id)
+    h2.tabIndex = (nbMedia + 11)
+    lien.tabIndex = (nbMedia + 10)
+    lien.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') {
+        const mediasSection = document.querySelector('.media_section')
+        const lightBox = getLightbox()
+        mediasSection.parentElement.appendChild(lightBox)
+        afficheLightBox(false)
+      }
+    })
     lien.addEventListener('click', function () {
       const mediasSection = document.querySelector('.media_section')
       const lightBox = getLightbox()
@@ -216,6 +248,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     icone.classList.add('fa-heart')
     likes.textContent = data.likes + ' '
     likes.classList.add('like')
+    likes.tabIndex = (nbMedia + 12)
     article.appendChild(lien)
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
@@ -280,9 +313,11 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     let photoSuivante
     let titreSuivant
     let photoSuivanteId
+    let descriptionSuivante
     let photoPrecedente
     let titrePrecedent
     let photoPrecedenteId
+    let descriptionPrecedente
     let indiceSuivant
     let indicePrecedent
     let k
@@ -310,12 +345,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
             }
             titreSuivant = photos[0].parentElement.lastChild.firstChild.textContent
             photoSuivanteId = photos[0].firstChild.classList[0]
+            descriptionPrecedente = photos[0].firstChild.alt
             if ((!bSuivant) && (photos[indicePrecedent].firstChild.tagName === 'VIDEO')) {
               bVideo = true
               photoPrecedente = photos[indicePrecedent].firstChild.firstChild.src
             } else {
               photoPrecedente = photos[indicePrecedent].firstChild.src
             }
+            descriptionPrecedente = photos[indicePrecedent].firstChild.alt
             titrePrecedent = photos[indicePrecedent].parentElement.lastChild.firstChild.textContent
             photoPrecedenteId = photos[indicePrecedent].firstChild.classList[0]
             break
@@ -328,6 +365,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
               photoPrecedente = photos[photos.length - 1].firstChild.src
             }
             photoPrecedenteId = photos[photos.length - 1].firstChild.classList[0]
+            descriptionPrecedente = photos[photos.length - 1].firstChild.alt
             titreSuivant = photos[indiceSuivant].parentElement.lastChild.firstChild.textContent
             if ((bSuivant) && (photos[indiceSuivant].firstChild.tagName === 'VIDEO')) {
               bVideo = true
@@ -336,6 +374,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
               photoSuivante = photos[indiceSuivant].firstChild.src
             }
             photoSuivanteId = photos[indiceSuivant].firstChild.classList[0]
+            descriptionSuivante = photos[indiceSuivant].firstChild.alt
             break
           default :
             titreSuivant = photos[indiceSuivant].parentElement.lastChild.firstChild.textContent
@@ -345,6 +384,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
             } else {
               photoSuivante = photos[indiceSuivant].firstChild.src
             }
+            descriptionSuivante = photos[indiceSuivant].firstChild.alt
             photoSuivanteId = photos[indiceSuivant].firstChild.classList[0]
             titrePrecedent = photos[indicePrecedent].parentElement.lastChild.firstChild.textContent
             if ((!bSuivant) && (photos[indicePrecedent].firstChild.tagName === 'VIDEO')) {
@@ -353,6 +393,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
             } else {
               photoPrecedente = photos[indicePrecedent].firstChild.src
             }
+            descriptionPrecedente = photos[indicePrecedent].firstChild.alt
             photoPrecedenteId = photos[indicePrecedent].firstChild.classList[0]
             break
         }
@@ -365,15 +406,23 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     video.preload = 'metadata'
     video.appendChild(source)
     if (bVideo) {
-      fig.replaceChild(video, image)
+      for (let y = 0; y < fig.children.length; y++) {
+        if (fig.children[y].tagName === 'IMG') {
+          fig.removeChild(fig.children[y])
+          fig.insertBefore(video, fig.children[1])
+        }
+      }
+      video.tabIndex = '2'
       if (bSuivant) {
         source.setAttribute('src', photoSuivante)
         figCaption.textContent = titreSuivant
         data.id = parseInt(photoSuivanteId)
+        video.setAttribute('alt', descriptionSuivante)
       } else {
         source.setAttribute('src', photoPrecedente)
         figCaption.textContent = titrePrecedent
         data.id = parseInt(photoPrecedenteId)
+        video.setAttribute('alt', descriptionPrecedente)
       }
     } else {
       for (let y = 0; y < fig.children.length; y++) {
@@ -382,14 +431,17 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
           fig.insertBefore(image, fig.children[1])
         }
       }
+      image.tabIndex = '2'
       if (bSuivant) {
         image.setAttribute('src', photoSuivante)
         figCaption.textContent = titreSuivant
         data.id = parseInt(photoSuivanteId)
+        image.setAttribute('alt', descriptionSuivante)
       } else {
         image.setAttribute('src', photoPrecedente)
         figCaption.textContent = titrePrecedent
         data.id = parseInt(photoPrecedenteId)
+        image.setAttribute('alt', descriptionPrecedente)
       }
     }
   }
@@ -410,9 +462,10 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     iconeF.classList.add('fas')
     iconeF.classList.add('fa-times')
     figCaption.textContent = data.titre
+    figCaption.tabIndex = '3'
     fig.id = 'figure'
     fig.appendChild(iconeFG)
-
+    fig.tabIndex = '1'
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
       video.controls = true
@@ -421,14 +474,30 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       video.preload = 'metadata'
       video.appendChild(source)
       fig.appendChild(video)
+      video.tabIndex = '2'
+      video.setAttribute('alt', data.description)
     } else {
       image.setAttribute('src', picture)
+      image.tabIndex = '2'
+      image.setAttribute('alt', data.description)
       fig.appendChild(image)
     }
 
     fig.appendChild(iconeFD)
     fig.appendChild(iconeF)
     fig.appendChild(figCaption)
+    iconeFG.tabIndex = '4'
+    iconeFD.tabIndex = '5'
+    iconeF.tabIndex = '6'
+    iconeFD.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') iconeFD.click()
+    })
+    iconeFG.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') iconeFG.click()
+    })
+    iconeF.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') iconeF.click()
+    })
     iconeFD.addEventListener('click', function () {
       getMediaSuivPrec(true, image, fig, figCaption)
     })

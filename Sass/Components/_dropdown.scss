@@ -59,7 +59,7 @@
     font-size : 18px;
     width: 80%;
 }
-.options li:hover {
+.options li:hover , li:focus-visible{
     background-color: $couleur-primaire;
     color:white;
 }

@@ -38,11 +38,16 @@ async function getPhotographers (photographers) {
 
 async function displayData (tphotographes) {
   const photographersSection = document.querySelector('.photographer_section')
-  tphotographes.forEach((photographer) => {
+  for (let i = 0; i < tphotographes.length; i++) {
+    const photographerModel = photographerFactory(tphotographes[i])
+    const userCardDOM = photographerModel.getUserCardDOM(i)
+    photographersSection.appendChild(userCardDOM)
+  }
+  /* tphotographes.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer)
     const userCardDOM = photographerModel.getUserCardDOM()
     photographersSection.appendChild(userCardDOM)
-  })
+  }) */
 }
 const getDonnees = async function (photographers) {
   const response = await fetch('./data/photographers.json')

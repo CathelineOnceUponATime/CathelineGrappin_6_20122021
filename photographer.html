@@ -10,31 +10,31 @@
   </head>
   <body>
     <header>
-      <a href="index.html"> <img src="assets/images/logo.png" alt="Fisheye Home page" class="logo"/></a>
+      <a href="index.html" tabindex="1"> <img src="assets/images/logo.png" alt="Fisheye Home page" class="logo"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button tabindex= "4" class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="media_section">
 
       </div>
     </main>
-    <div class="modal" role="group" tabindex="2">
+    <div class="modal" role="group" tabindex="1">
 				<form>
         <header>
           <h2 id="titre" tabindex="2">Contactez-moi</h2>
-          <img id="idFermer" tabIndex="1" src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
+          <img id="idFermer" tabIndex="8" src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
 						<label for="idPrenom"> Prénom </label>
-						<input id="idPrenom" type="text" tabindex="2" aria-describedby="prénom" aria-labelledby="idPrenom"/>
+						<input id="idPrenom" type="text" tabindex="3" aria-describedby="prénom" aria-labelledby="idPrenom"/>
             <label for="idNom"> Nom </label>
-						<input id="idNom" type="text" tabindex="2" aria-describedby="nom" aria-labelledby="idNom"/>
+						<input id="idNom" type="text" tabindex="4" aria-describedby="nom" aria-labelledby="idNom"/>
             <label for="idEmail"> Email </label>
-						<input id="idEmail" type="text" tabindex="2" aria-describedby="email" aria-labelledby="idEmail"/>
+						<input id="idEmail" type="text" tabindex="5" aria-describedby="email" aria-labelledby="idEmail"/>
             <label for="idMessage"> Votre Message </label>
-						<textarea id="idMessage" rows="9" alt ="Your message" tabindex="2" aria-describedby="message" aria-labelledby="idMessage"> </textarea>
-          <button class="contact_button" alt="Send" tabIndex="2" onclick="return envoiMessage()" aria-labelledby="idFermer">Envoyer</button>
+						<textarea id="idMessage" rows="9" alt ="Your message" tabindex="6" aria-describedby="message" aria-labelledby="idMessage"> </textarea>
+          <button class="contact_button" alt="Send" tabIndex="7" onclick="return envoiMessage()" aria-labelledby="idFermer">Envoyer</button>
 				</form>
 		</div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
