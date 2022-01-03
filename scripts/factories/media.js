@@ -271,6 +271,9 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     divMedia.appendChild(h2)
     divMedia.appendChild(likes)
     article.appendChild(divMedia)
+    likes.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter') icone.click()
+    })
     icone.addEventListener('click', function () {
       data.likes++
       likes.textContent = data.likes + ' '
