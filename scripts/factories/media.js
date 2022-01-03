@@ -404,8 +404,8 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       }
     }
     video.controls = true
-    video.width = 1050
-    video.height = 900
+    video.width = '90%'
+    video.height = 'auto'
     video.preload = 'metadata'
     video.appendChild(source)
     if (bVideo) {
@@ -473,7 +473,6 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       source.setAttribute('src', lienVideo)
       video.controls = true
       video.width = 1050
-      video.height = 900
       video.preload = 'metadata'
       video.appendChild(source)
       fig.appendChild(video)

@@ -30,6 +30,7 @@
 }
 
 .media{
+    margin: 0px 20px;
     div{
         @include en-flex(row, space-between, center);
         text-align: center;

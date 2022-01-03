@@ -26,14 +26,14 @@
           <img id="idFermer" tabIndex="8" src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
 					<label for="prenom"> Prénom </label>
-					<input id="prenom" type="text" tabindex="3" aria-labelledby="prenom"/>
+					<input id="prenom" type="text" tabindex="3" title="Entrer votre prénom"/>
           <label for="nom"> Nom </label>
-					<input id="nom" type="text" tabindex="4" aria-labelledby="nom"/>
+					<input id="nom" type="text" tabindex="4" title="Entrer votre nom"/>
           <label for="email"> Email </label>
-					<input id="email" type="text" tabindex="5" aria-labelledby="email"/>
+					<input id="email" type="text" tabindex="5" title="Entrer votre email"/>
           <label for="message"> Votre Message </label>
-					<textarea id="message" rows="9" alt="Your message" tabindex="6" aria-labelledby="message"> </textarea>
-          <button class="contact_button" alt="Send" tabIndex="7" onclick="return envoiMessage()" aria-labelledby="idFermer">Envoyer</button>
+					<textarea id="message" rows="9" tabindex="6" title="Entrer votre message"> </textarea>
+          <button class="contact_button" title="Envoyer votre message" tabIndex="7" onclick="return envoiMessage()">Envoyer</button>
 				</form>
 		</div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

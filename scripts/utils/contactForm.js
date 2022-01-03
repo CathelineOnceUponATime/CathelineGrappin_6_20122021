@@ -2,10 +2,10 @@
 /* eslint no-undef: "error" */
 let fichPhotographes
 let photographeC
-const prenom = document.getElementById('idPrenom')
-const nom = document.getElementById('idNom')
-const email = document.getElementById('idEmail')
-const message = document.getElementById('idMessage')
+const prenom = document.getElementById('prenom')
+const nom = document.getElementById('nom')
+const email = document.getElementById('email')
+const message = document.getElementById('message')
 const modal = document.getElementsByClassName('modal')
 const logo = document.getElementsByClassName('logo')
 const main = document.getElementById('main')
@@ -19,11 +19,14 @@ function displayModal () { // eslint-disable-line no-unused-vars
     id = searchParam.get('id')
     console.log(id)
   }
-  modal[0].style.display = 'block'
   const bFermer = document.getElementsByClassName('contact_button')
   bFermer[1].style.marginTop = '25px'
-  logo[0].style.display = 'none'
-  main.style.display = 'none'
+  main.style.filter = 'blur(5px)'
+  main.style.pointerEvents = 'none'
+  main.tabIndex = -1
+  logo[0].style.filter = 'blur(5px)'
+  logo[0].style.pointerEvents = 'none'
+  modal[0].style.display = 'flex'
 
   const getDonneesMedia = async function (fichPhotographes) {
     const response = await fetch('./data/photographers.json')
@@ -64,10 +67,12 @@ function displayModal () { // eslint-disable-line no-unused-vars
 }
 
 function closeModal () { // eslint-disable-line no-unused-vars
-  modal[0].style.display = 'none'
-  main.style.display = 'block'
-  logo[0].style.display = 'block'
   videFormulaire()
+  modal[0].style.display = 'none'
+  main.style.filter = 'none'
+  main.style.pointerEvents = 'auto'
+  logo[0].style.filter = 'none'
+  logo[0].style.pointerEvents = 'auto'
 }
 
 function videFormulaire () {

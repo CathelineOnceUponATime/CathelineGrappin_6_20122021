@@ -1,0 +1,37 @@
+@media (max-width: 900px)
+{
+    .photograph-header {
+        flex-direction: column;
+        height: 600px;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+    .encart{
+        left: auto;
+    }
+}
+@media (max-width: 800px) {
+    .media {
+        width: 100%;
+        img {
+        width: 100%;
+        }
+    }
+    video {
+        width: 100%;
+    }
+    
+}
+@media (max-width: 1050px) {
+    #figure {
+        margin: 0;
+        width: 95%;
+        img, video {
+            width: 90%;
+        }
+        .fa-times {
+            left: 88%;
+        }
+    }
+
+}
