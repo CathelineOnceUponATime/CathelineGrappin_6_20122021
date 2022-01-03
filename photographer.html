@@ -3,7 +3,6 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png" alt="logoFavIcon">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Fisheye - photographe </title>
@@ -26,14 +25,14 @@
           <h2 id="titre" tabindex="2">Contactez-moi</h2>
           <img id="idFermer" tabIndex="8" src="assets/icons/close.svg" alt="Close Contact form" onclick="closeModal()" />
         </header>
-						<label for="idPrenom"> Prénom </label>
-						<input id="idPrenom" type="text" tabindex="3" aria-describedby="prénom" aria-labelledby="idPrenom"/>
-            <label for="idNom"> Nom </label>
-						<input id="idNom" type="text" tabindex="4" aria-describedby="nom" aria-labelledby="idNom"/>
-            <label for="idEmail"> Email </label>
-						<input id="idEmail" type="text" tabindex="5" aria-describedby="email" aria-labelledby="idEmail"/>
-            <label for="idMessage"> Votre Message </label>
-						<textarea id="idMessage" rows="9" alt ="Your message" tabindex="6" aria-describedby="message" aria-labelledby="idMessage"> </textarea>
+					<label for="prenom"> Prénom </label>
+					<input id="prenom" type="text" tabindex="3" aria-labelledby="prenom"/>
+          <label for="nom"> Nom </label>
+					<input id="nom" type="text" tabindex="4" aria-labelledby="nom"/>
+          <label for="email"> Email </label>
+					<input id="email" type="text" tabindex="5" aria-labelledby="email"/>
+          <label for="message"> Votre Message </label>
+					<textarea id="message" rows="9" alt="Your message" tabindex="6" aria-labelledby="message"> </textarea>
           <button class="contact_button" alt="Send" tabIndex="7" onclick="return envoiMessage()" aria-labelledby="idFermer">Envoyer</button>
 				</form>
 		</div>

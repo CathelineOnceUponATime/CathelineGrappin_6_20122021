@@ -490,8 +490,11 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     fig.appendChild(iconeF)
     fig.appendChild(figCaption)
     iconeFG.tabIndex = '4'
+    iconeFG.ariaLabel = 'Previous image'
     iconeFD.tabIndex = '5'
+    iconeFD.ariaLabel = 'Next image'
     iconeF.tabIndex = '6'
+    iconeF.ariaLabel = 'Close dialog'
     iconeFD.addEventListener('keydown', (e) => {
       if (e.code === 'Enter') iconeFD.click()
     })
