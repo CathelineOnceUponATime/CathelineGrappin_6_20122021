@@ -21,11 +21,13 @@ function displayModal () { // eslint-disable-line no-unused-vars
   }
   const bFermer = document.getElementsByClassName('contact_button')
   bFermer[1].style.marginTop = '25px'
-  main.style.filter = 'blur(5px)'
+  /* main.style.filter = 'blur(5px)'
   main.style.pointerEvents = 'none'
   main.tabIndex = -1
   logo[0].style.filter = 'blur(5px)'
-  logo[0].style.pointerEvents = 'none'
+  logo[0].style.pointerEvents = 'none' */
+  main.style.display = 'none'
+  logo[0].style.display = 'none'
   modal[0].style.display = 'flex'
 
   const getDonneesMedia = async function (fichPhotographes) {
@@ -69,10 +71,12 @@ function displayModal () { // eslint-disable-line no-unused-vars
 function closeModal () { // eslint-disable-line no-unused-vars
   videFormulaire()
   modal[0].style.display = 'none'
-  main.style.filter = 'none'
+  main.style.display = 'block'
+  logo[0].style.display = 'block'
+  /* main.style.filter = 'none'
   main.style.pointerEvents = 'auto'
   logo[0].style.filter = 'none'
-  logo[0].style.pointerEvents = 'auto'
+  logo[0].style.pointerEvents = 'auto' */
 }
 
 function videFormulaire () {
