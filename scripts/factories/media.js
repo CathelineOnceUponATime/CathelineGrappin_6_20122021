@@ -2,6 +2,7 @@
 function photographeEntete (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/photographers/${data.portrait}`
 
+  // Fonction permettant de créer dans le DOM l'en-tête de la page d'un photographe
   function getPhotographeEntete () {
     const article = document.createElement('article')
     const h1 = document.createElement('h1')
@@ -22,6 +23,7 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
     return article
   }
 
+  // Fonction permetttant de récupéré l'image du photographe pour l'en-tête de la page photographe
   function getPhotographeImage () {
     const img = document.createElement('img')
     img.setAttribute('src', picture)
@@ -32,10 +34,11 @@ function photographeEntete (data) { // eslint-disable-line no-unused-vars
   return { picture, data, getPhotographeEntete, getPhotographeImage }
 }
 
+// Fonction permettant de créer l'encart affichant le nb de likes sur la page d'un photographe
 function encart (data) { // eslint-disable-line no-unused-vars
   function getEncart () {
     const article = document.createElement('article')
-    const nbLikes = document.createElement('p')
+    const nbLikes = document.createElement('h3')
     const icone = document.createElement('span')
     const tarif = document.createElement('p')
     article.classList.add('encart')
@@ -54,6 +57,7 @@ function encart (data) { // eslint-disable-line no-unused-vars
 }
 
 function tri (data) { // eslint-disable-line no-unused-vars
+  // Fonction permettant de prendre en compte un type de tri et de faire le tri puis renvoyer le tableau trié
   function trier (type) {
     const sortByMapped = (map, compareFn) => (a, b) => compareFn(map(a), map(b))
     const byValue = (a, b) => b - a
@@ -82,6 +86,7 @@ function tri (data) { // eslint-disable-line no-unused-vars
     return data.tMedia
   }
 
+  // Fonction permettant de rajouter un label au tri
   function getLabelTri () {
     const label = document.createElement('label')
     label.textContent = 'Trier par'
@@ -90,6 +95,7 @@ function tri (data) { // eslint-disable-line no-unused-vars
     return label
   }
 
+  // Fonction permettant de créer dans le DOM le select pour le tri
   function getTri () {
     const ensembleTri = document.createElement('div')
     const select = document.createElement('select')
@@ -117,7 +123,12 @@ function tri (data) { // eslint-disable-line no-unused-vars
     return ensembleTri
   }
 
+  // Fonction permettant de mettre en forme le tri
   function enFormeTri () {
+    const nbLikesTotal = document.getElementById('nbLikesTotal')
+    const iconeCoeur = document.createElement('span')
+    iconeCoeur.classList.add('fas')
+    iconeCoeur.classList.add('fa-heart')
     const label = document.createElement('label')
     label.classList.add('s-hidden')
     label.textContent = 'Trier par'
@@ -176,6 +187,8 @@ function tri (data) { // eslint-disable-line no-unused-vars
             mediasSection.appendChild(userCardDOM)
             nbEnPlus += 2
           }
+          nbLikesTotal.innerText = data.nbLikesTotal + ' '
+          nbLikesTotal.appendChild(iconeCoeur)
         }
         selectTri.classList.remove('active')
         $('#selectBox').val($('#selectBox').attr('rel'))
@@ -224,6 +237,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const divMedia = document.createElement('div')
     const nbLikesTotal = document.getElementById('nbLikesTotal')
     const iconeTotal = document.createElement('span')
+    const descriptionVideo = document.createElement('p')
     let nbLikes = 0
     article.classList.add('media')
     h2.textContent = data.titre
@@ -252,13 +266,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     article.appendChild(lien)
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
+      descriptionVideo.innerText = data.description
       video.controls = false
       video.width = 350
       video.height = 300
       video.style.objectFit = 'cover'
-      video.setAttribute('alt', data.description)
       video.preload = 'metadata'
       video.appendChild(source)
+      video.appendChild(descriptionVideo)
       video.classList.add(data.id)
       lien.appendChild(video)
     } else {
@@ -327,7 +342,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     let bVideo = false
     const video = document.createElement('video')
     const source = document.createElement('source')
-
+    const descriptionVideo = document.createElement('p')
     const photos = document.querySelectorAll('.media > a')
 
     for (let j = 0; j < photos.length; j++) {
@@ -408,6 +423,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     video.height = 'auto'
     video.preload = 'metadata'
     video.appendChild(source)
+    video.appendChild(descriptionVideo)
     if (bVideo) {
       for (let y = 0; y < fig.children.length; y++) {
         if (fig.children[y].tagName === 'IMG') {
@@ -418,14 +434,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
       video.tabIndex = '2'
       if (bSuivant) {
         source.setAttribute('src', photoSuivante)
+        descriptionVideo.innerText = descriptionSuivante
         figCaption.textContent = titreSuivant
         data.id = parseInt(photoSuivanteId)
-        video.setAttribute('alt', descriptionSuivante)
       } else {
         source.setAttribute('src', photoPrecedente)
+        descriptionVideo.innerText = descriptionPrecedente
         figCaption.textContent = titrePrecedent
         data.id = parseInt(photoPrecedenteId)
-        video.setAttribute('alt', descriptionPrecedente)
       }
     } else {
       for (let y = 0; y < fig.children.length; y++) {
@@ -454,6 +470,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     const figCaption = document.createElement('figcaption')
     const image = document.createElement('img')
     const video = document.createElement('video')
+    const descriptionVideo = document.createElement('p')
     const source = document.createElement('source')
     const iconeFD = document.createElement('span')
     const iconeFG = document.createElement('span')
@@ -471,13 +488,14 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
     fig.tabIndex = '1'
     if (data.image === undefined) {
       source.setAttribute('src', lienVideo)
+      descriptionVideo.innerText = data.description
       video.controls = true
       video.width = 1050
       video.preload = 'metadata'
-      video.appendChild(source)
       fig.appendChild(video)
+      video.appendChild(source)
+      video.appendChild(descriptionVideo)
       video.tabIndex = '2'
-      video.setAttribute('alt', data.description)
     } else {
       image.setAttribute('src', picture)
       image.tabIndex = '2'

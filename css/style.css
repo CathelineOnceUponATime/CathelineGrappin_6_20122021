@@ -78,12 +78,15 @@ h1 {
 .media div h2 {
   color: #901c1c;
   font-size: 24px;
+  font-weight: 400;
 }
 .media div .like {
   color: #901c1c;
   font-size: 16px;
+  font-weight: 500;
 }
-.media div .like i {
+.media div .like span {
+  cursor: pointer;
   margin-left: 10px;
 }
 .media img {
@@ -110,6 +113,11 @@ h1 {
   bottom: 0%;
   top: 95%;
   padding: 0px 20px;
+}
+.encart h3 {
+  color: black;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .modal {
@@ -192,6 +200,7 @@ form textarea {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 20px;
 }
 .contact_button:hover, .contact_button:focus {
   background-color: #d3573c;
@@ -349,13 +358,17 @@ form textarea {
   color: #901c1c;
   font-size: 24px;
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   left: 7%;
 }
 #figure img {
-  width: 1050px;
-  height: 900px;
+  width: 90%;
+  height: 86vh;
   object-fit: contain;
+}
+#figure video {
+  width: 90%;
+  height: auto;
 }
 
 @media (max-width: 900px) {

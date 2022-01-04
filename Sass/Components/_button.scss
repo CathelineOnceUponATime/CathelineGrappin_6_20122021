@@ -8,6 +8,7 @@
     background-color: $couleur-secondaire;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 20px;
     &:hover, &:focus {
         background-color: $couleur-primaire;
         color: black;

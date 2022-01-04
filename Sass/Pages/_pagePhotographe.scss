@@ -36,10 +36,13 @@
         text-align: center;
         h2 {
             @include en-forme($couleur-secondaire, 24px);
+            font-weight: 400;
         }    
         .like {
             @include en-forme($couleur-secondaire, 16px);
-            i {
+            font-weight: 500;
+            span {
+                cursor: pointer;
                 margin-left : 10px;
             }
         }
@@ -65,4 +68,8 @@
     bottom: 0%;
     top: 95%;
     padding: 0px 20px;
+    h3 {
+        @include en-forme(black, 24px);
+        font-weight: 500;
+    }
 }
