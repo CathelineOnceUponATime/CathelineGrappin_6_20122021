@@ -23,7 +23,7 @@ const tErreurs = []
 
 // Nouvel objet pour chaque erreur
 const ePrenom = new Erreur('prenom', 'Merci de saisir minimum deux caractères pour le prénom', false, 'prenomErreur', 'saisie')
-const eNom = new Erreur('nom', 'Merci de saisir minimum deux caractères pour le Nom', false, 'nomErreur', 'saisie')
+const eNom = new Erreur('nom', 'Merci de saisir minimum deux caractères pour le nom', false, 'nomErreur', 'saisie')
 const eMail = new Erreur('email', 'Merci de saisir une adresse e-mail valide', false, 'emailErreur', 'email')
 const eMessage = new Erreur('message', 'Merci de saisir votre message', false, 'messageErreur', 'saisie')
 
@@ -91,10 +91,6 @@ function closeModal () { // eslint-disable-line no-unused-vars
   modal[0].style.display = 'none'
   main.style.display = 'block'
   logo[0].style.display = 'block'
-  /* main.style.filter = 'none'
-  main.style.pointerEvents = 'auto'
-  logo[0].style.filter = 'none'
-  logo[0].style.pointerEvents = 'auto' */
 }
 
 function montreErreur (eErreur) {
@@ -102,6 +98,7 @@ function montreErreur (eErreur) {
   const eltParent = elt.parentElement
   const erreur = document.createElement('label')
   erreur.classList.add('erreur')
+  erreur.setAttribute('for', eErreur.id)
   erreur.innerHTML = eErreur.message
   erreur.id = eErreur.idErreur
   eltParent.insertBefore(erreur, elt.nextElementSibling)

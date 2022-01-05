@@ -43,17 +43,11 @@ async function displayData (tphotographes) {
     const userCardDOM = photographerModel.getUserCardDOM(i)
     photographersSection.appendChild(userCardDOM)
   }
-  /* tphotographes.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer)
-    const userCardDOM = photographerModel.getUserCardDOM()
-    photographersSection.appendChild(userCardDOM)
-  }) */
 }
 const getDonnees = async function (photographers) {
   const response = await fetch('./data/photographers.json')
   photographers = await response.json()
   tphotographes = await getPhotographers(photographers)
-  console.log(photographers)
 }
 
 async function init () {

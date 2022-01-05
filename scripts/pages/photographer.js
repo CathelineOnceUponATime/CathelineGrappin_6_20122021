@@ -40,7 +40,6 @@ const searchParam = new URLSearchParams(url.search)
 let id
 if (searchParam.has('id')) {
   id = searchParam.get('id')
-  console.log(id)
 }
 
 async function getMedias (lesPhotographes) {
@@ -85,7 +84,6 @@ async function getMedias (lesPhotographes) {
 async function afficheMedia (tphotographes) {
   const mediasSection = document.querySelector('.media_section')
   const photographeHeader = document.querySelector('.photograph-header')
-  console.log(id)
   tphotographes.forEach((photographer) => {
     if (photographer.id === parseInt(id)) {
       const photographe = photographeEntete(photographer)
@@ -117,7 +115,6 @@ const getDonneesMedia = async function (lesPhotographes) {
   const response = await fetch('./data/photographers.json')
   lesPhotographes = await response.json()
   tabPhotographes = await getMedias(lesPhotographes)
-  console.log(lesPhotographes)
 }
 
 async function init () {

@@ -46,9 +46,14 @@ form {
         border-radius: 5px;
     }
     textarea {
+        font-family: 'DM Sans';
         font-size: 36px;
         border: none;
         border-radius: 5px;
         width: 100%;
+    }
+    .erreur {
+        @include en-forme(rgb(152, 6, 6), 26px);
+        margin-bottom: 20px;
     }
 }
