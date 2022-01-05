@@ -1,11 +1,12 @@
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    @include en-flex(row, center, center, wrap);
     margin-top: 100px;
     article {
         @include en-flex(column, center, center);
         justify-self: center;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        width: 30%;
         a {
             text-decoration: none;
             @include en-flex(column, normal, center);

@@ -1,3 +1,33 @@
+@media (max-width: 1150px) {
+    .modal {
+        padding-top: 150px;
+        #titre {
+            margin-bottom: 170px;
+        }
+        img {
+            position: absolute;
+            right: 1%;
+        }
+    }
+}
+@media (max-width: 1050px) {
+    #figure {
+        margin: 0;
+        width: 95%;
+        img, video {
+            width: 90%;
+        }
+        .fa-times {
+            left: 88%;
+        }
+    }
+    .photographer_section {
+        article {
+            width: 50%;
+            margin-right: 0px;
+        }
+    }
+}
 @media (max-width: 900px)
 {
     .photograph-header {
@@ -20,18 +50,11 @@
     video {
         width: 100%;
     }
-    
-}
-@media (max-width: 1050px) {
-    #figure {
-        margin: 0;
-        width: 95%;
-        img, video {
-            width: 90%;
-        }
-        .fa-times {
-            left: 88%;
+    .photographer_section {
+        article {
+            width: 100%;
+            margin-right: 0px;
         }
     }
-
 }
+
