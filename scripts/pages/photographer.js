@@ -1,5 +1,5 @@
 // Mettre le code JavaScript lié à la page photographer.html
-/* global mediaFactory, fetch, photographeEntete, encart, tri */
+/* global mediaFactory, fetch, photographeEnteteFactory, encart, tri */
 /* eslint no-undef: "error" */
 
 let tabPhotographes = []
@@ -86,7 +86,7 @@ async function afficheMedia (tphotographes) {
   const photographeHeader = document.querySelector('.photograph-header')
   tphotographes.forEach((photographer) => {
     if (photographer.id === parseInt(id)) {
-      const photographe = photographeEntete(photographer)
+      const photographe = photographeEnteteFactory(photographer)
       const photographeTete = photographe.getPhotographeEntete()
       const photographeImage = photographe.getPhotographeImage()
       const photographeEncart = encart(photographer)

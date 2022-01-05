@@ -1,7 +1,7 @@
 /* global lightboxFactory */
 /* eslint no-undef: "error" */
 /* eslint-env jquery */
-function photographeEntete (data) { // eslint-disable-line no-unused-vars
+function photographeEnteteFactory (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/photographers/${data.portrait}`
 
   // Fonction permettant de créer dans le DOM l'en-tête de la page d'un photographe
