@@ -27,6 +27,16 @@
         p {
             margin: 0;
         }
+        .info {
+            @include en-flex(column, center,center);
+            justify-self: auto;
+            margin: 0;
+            width: auto;
+            h3 {
+                font-weight: 400;
+                margin: 0
+            }
+        }
         .ville {
             @include en-forme($couleur-secondaire, 13px);
         }
