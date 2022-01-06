@@ -33,7 +33,8 @@ class Media {
     this.description = description
   }
 }
-
+// code permettant de récupérer l'id du photographe dans l'URL
+// pour pouvoir générer sa page perso
 const lienSite = window.location.href
 const url = new URL(lienSite)
 const searchParam = new URLSearchParams(url.search)
@@ -41,7 +42,7 @@ let id
 if (searchParam.has('id')) {
   id = searchParam.get('id')
 }
-
+// Fonction permettant de mettre les données de chaque photographe dans un tableau ainsi que ses médias
 async function getMedias (lesPhotographes) {
   let photographeCourant
   let mediaCourant
@@ -80,7 +81,8 @@ async function getMedias (lesPhotographes) {
   }
   return tabPhotographes
 }
-
+// Fonction permettant l'affichage dans le DOM de la page photographe
+// l'entete, l'encart, la fonction de tri, les médias
 async function afficheMedia (tphotographes) {
   const mediasSection = document.querySelector('.media_section')
   const photographeHeader = document.querySelector('.photograph-header')
@@ -111,6 +113,7 @@ async function afficheMedia (tphotographes) {
   })
 }
 
+// Fonction permettant de parcourir le fichier JSON fourni et de manipuler les données
 const getDonneesMedia = async function (lesPhotographes) {
   const response = await fetch('./data/photographers.json')
   lesPhotographes = await response.json()

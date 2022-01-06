@@ -40,7 +40,6 @@ function displayModal () { // eslint-disable-line no-unused-vars
   let id
   if (searchParam.has('id')) {
     id = searchParam.get('id')
-    console.log(id)
   }
   const bFermer = document.getElementsByClassName('contact_button')
   bFermer[1].style.marginTop = '25px'
@@ -48,12 +47,16 @@ function displayModal () { // eslint-disable-line no-unused-vars
   logo[0].style.display = 'none'
   modal[0].style.display = 'flex'
 
+  // Fonction permettant de parcourir le fichier JSON fourni et de manipuler les données
   const getDonneesMedia = async function (fichPhotographes) {
     const response = await fetch('./data/photographers.json')
     fichPhotographes = await response.json()
     photographeC = await getPhotographe(fichPhotographes)
     console.log(photographeC)
   }
+
+  // Fonction permettant de récupérer le nom du photographe pour
+  // le rajouter au contacter-moi du formulaire
   async function getPhotographeNom () {
     const titre = document.getElementById('titre')
     titre.innerHTML += '<br>' + photographeC.nom + '</br>'
@@ -66,6 +69,7 @@ function displayModal () { // eslint-disable-line no-unused-vars
 
   init()
 
+  // Fonction permettant de récupérer les données du photographe voulu dans son objet
   async function getPhotographe (fichPhotographes) {
     let photographeCourant
     for (let i = 0; i < fichPhotographes.photographers.length; i++) {
@@ -85,14 +89,16 @@ function displayModal () { // eslint-disable-line no-unused-vars
     return photographeCourant
   }
 }
-
+// Fonction appelé lors de la fermeture du formulaire
+// permettant de vider le formulaire et réafficher les données voulu
 function closeModal () { // eslint-disable-line no-unused-vars
   videFormulaire()
   modal[0].style.display = 'none'
   main.style.display = 'block'
   logo[0].style.display = 'block'
 }
-
+// Fonction permettant de rajouter au label ayant une erreur
+// un nouveau label contenant le message d'erreur et une coloration rouge du champ
 function montreErreur (eErreur) {
   const elt = document.getElementById(eErreur.id)
   const eltParent = elt.parentElement
@@ -121,6 +127,8 @@ function fermeErreur (eErreur) {
   }
 }
 
+// Fonction permettant d'effectuer une vérification
+// des données entrées dans le formulaire
 function verificationFormulaire (idChamp, contenuChamp) {
   let bErreur = false
   for (let i = 0; i < tErreurs.length; i++) {
@@ -166,7 +174,8 @@ function verificationFormulaire (idChamp, contenuChamp) {
     }
   }
 }
-
+// Fonction permettant de donner si oui ou non il y a la présence
+//  d'une erreur sur l'un des champs
 function presenceErreurChamp () {
   let bErreur = false
   for (let i = 0; i < tErreurs.length; i++) {
@@ -178,6 +187,8 @@ function presenceErreurChamp () {
   return bErreur
 }
 
+// Fonction permettant de vider les champs du formulaire
+// après envoi ou fermeture de ce dernier
 function videFormulaire () {
   prenom.value = ''
   nom.value = ''
@@ -193,6 +204,8 @@ function videFormulaire () {
   }
 }
 
+// Fonction effectuant les vérifications nécessaires du formulaire
+// ainsi qu'un affichage des données si ces dernières sont correctes
 function envoiMessage () { // eslint-disable-line no-unused-vars
   const form = document.getElementsByTagName('form')
   form[0].action = 'photographer.html?id=' + photographeC.id

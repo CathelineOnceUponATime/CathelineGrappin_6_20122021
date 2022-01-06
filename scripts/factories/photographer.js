@@ -1,6 +1,7 @@
 function photographerFactory (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/photographers/${data.portrait}`
 
+  // Fonction permettant la création d'une carte photographe dans le DOM
   function getUserCardDOM (nbCart) {
     const article = document.createElement('article')
     const lien = document.createElement('a')

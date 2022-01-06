@@ -18,7 +18,7 @@ class Photographe {
     this.nbLikesTotal = 0
   }
 }
-
+// Fonction permettant de stocker dans un tableau toutes les infos de chaque photographe
 async function getPhotographers (photographers) {
   let photographeCourant
   for (let i = 0; i < photographers.photographers.length; i++) {
@@ -35,7 +35,7 @@ async function getPhotographers (photographers) {
   }
   return tphotographes
 }
-
+// Fonction qui permet l'affichage de chaque carte de photographe dans le DOM
 async function displayData (tphotographes) {
   const photographersSection = document.querySelector('.photographer_section')
   for (let i = 0; i < tphotographes.length; i++) {
@@ -44,6 +44,7 @@ async function displayData (tphotographes) {
     photographersSection.appendChild(userCardDOM)
   }
 }
+// Fonction permettant de parcourir le fichier JSON fourni et de manipuler les données
 const getDonnees = async function (photographers) {
   const response = await fetch('./data/photographers.json')
   photographers = await response.json()

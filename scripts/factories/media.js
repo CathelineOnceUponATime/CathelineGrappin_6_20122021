@@ -63,6 +63,7 @@ function mediaFactory (data) { // eslint-disable-line no-unused-vars
   const lienVideo = `assets/images/${data.photographeId}/${data.video}`
   const lightBox = lightboxFactory(data)
 
+  // Fonction créer dans le DOM un media
   function getMediaCardDOM (nbMedia) {
     const article = document.createElement('article')
     const lien = document.createElement('a')

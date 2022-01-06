@@ -3,6 +3,8 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
   const picture = `assets/images/${data.photographeId}/${data.image}`
   const lienVideo = `assets/images/${data.photographeId}/${data.video}`
 
+  // Fonction gérant les élèments qui doivent être ou non affichés
+  // lorsque la lightBox est affichée
   function afficheLightBox (bAffiche) {
     const photoHeader = document.getElementsByClassName('photograph-header')
     const header = document.getElementsByTagName('header')
@@ -30,6 +32,7 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
     }
   }
 
+  // Fonction gérant l'affichage du média suivant ou précédant
   function getMediaSuivPrec (bSuivant, image, fig, figCaption) {
     let photoSuivante
     let titreSuivant
@@ -168,6 +171,7 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
     }
   }
 
+  // Fonction créant la lightBox
   function getLightbox () {
     const fig = document.createElement('figure')
     const figCaption = document.createElement('figcaption')
