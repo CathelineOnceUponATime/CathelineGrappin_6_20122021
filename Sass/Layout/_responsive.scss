@@ -41,6 +41,18 @@
     }
 }
 @media (max-width: 800px) {
+    .accueil {
+        flex-direction: column;
+        h1 {
+            margin: 0;
+        }
+        .logo {
+            margin: 0;
+        }
+    }
+    .logo {
+        margin: 0 67%;
+    }
     .media {
         width: 100%;
         img {

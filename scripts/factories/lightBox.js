@@ -4,7 +4,8 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
   const lienVideo = `assets/images/${data.photographeId}/${data.video}`
 
   function afficheLightBox (bAffiche) {
-    const header = document.getElementsByClassName('photograph-header')
+    const photoHeader = document.getElementsByClassName('photograph-header')
+    const header = document.getElementsByTagName('header')
     const mediaSection = document.getElementsByClassName('media_section')
     const encart = document.getElementsByClassName('encart')
     const figure = document.getElementById('figure')
@@ -13,6 +14,7 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
 
     if (bAffiche) {
       header[0].style.display = 'flex'
+      photoHeader[0].style.display = 'flex'
       mediaSection[0].style.display = 'flex'
       encart[0].style.display = 'flex'
       labelTri[0].style.display = 'inline-block'
@@ -20,6 +22,7 @@ function lightboxFactory (data) { // eslint-disable-line no-unused-vars
       figure.parentElement.removeChild(figure)
     } else {
       header[0].style.display = 'none'
+      photoHeader[0].style.display = 'none'
       mediaSection[0].style.display = 'none'
       encart[0].style.display = 'none'
       labelTri[0].style.display = 'none'

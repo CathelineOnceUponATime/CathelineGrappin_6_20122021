@@ -438,6 +438,20 @@ form .erreur {
   }
 }
 @media (max-width: 800px) {
+  .accueil {
+    flex-direction: column;
+  }
+  .accueil h1 {
+    margin: 0;
+  }
+  .accueil .logo {
+    margin: 0;
+  }
+
+  .logo {
+    margin: 0 67%;
+  }
+
   .media {
     width: 100%;
   }
