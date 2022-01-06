@@ -1,7 +1,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 100px 30px 100px;
     @include en-flex(row, space-between, center);
     h1 {
         @include en-forme($couleur-primaire, 64px);

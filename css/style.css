@@ -26,7 +26,7 @@ h1 {
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
-  margin: 0 100px;
+  margin: 0 100px 30px 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -225,7 +225,7 @@ form .erreur {
 .pTrier {
   color: black;
   font-size: 18px;
-  margin: 30px 30px 30px 50px;
+  margin: 30px 30px 30px 100px;
 }
 
 .s-hidden {
