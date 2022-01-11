@@ -1,25 +1,11 @@
-/* global photographerFactory, fetch */
+/* global photographerFactory, fetch, Photographe */
 /* eslint no-undef: "error" */
 
 let tphotographes = []
 let photographers
 
-class Photographe {
-  constructor (id, nom, ville, pays, tagLine, prix, portrait, description) {
-    this.id = id
-    this.nom = nom
-    this.ville = ville
-    this.pays = pays
-    this.tagLine = tagLine
-    this.prix = prix
-    this.portrait = portrait
-    this.description = description
-    this.tMedia = []
-    this.nbLikesTotal = 0
-  }
-}
 // Fonction permettant de stocker dans un tableau toutes les infos de chaque photographe
-async function getPhotographers (photographers) {
+function getPhotographers (photographers) {
   let photographeCourant
   for (let i = 0; i < photographers.photographers.length; i++) {
     photographeCourant = new Photographe()
@@ -36,7 +22,7 @@ async function getPhotographers (photographers) {
   return tphotographes
 }
 // Fonction qui permet l'affichage de chaque carte de photographe dans le DOM
-async function displayData (tphotographes) {
+function displayData (tphotographes) {
   const photographersSection = document.querySelector('.photographer_section')
   for (let i = 0; i < tphotographes.length; i++) {
     const photographerModel = photographerFactory(tphotographes[i])
@@ -48,7 +34,7 @@ async function displayData (tphotographes) {
 const getDonnees = async function (photographers) {
   const response = await fetch('./data/photographers.json')
   photographers = await response.json()
-  tphotographes = await getPhotographers(photographers)
+  tphotographes = getPhotographers(photographers)
 }
 
 async function init () {
