@@ -22,6 +22,8 @@ https://cathelineonceuponatime.github.io/CathelineGrappin_6_20122021/
 
 https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR
 
+https://github.com/OpenClassrooms-Student-Center/Front-End-Fisheye
+
 ## Installation
 
 ### Prerequisites
